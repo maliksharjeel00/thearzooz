@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Design & Development - Arzooz</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-color: #ff6b35;
+            --dark-bg: #1a1a1a;
+            --light-gray: #f8f9fa;
+            --text-muted: #6c757d;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .navbar {
+            background: #fff !important;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+        }
+
+        .navbar-brand {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #333 !important;
+        }
+
+        .accent {
+            color: var(--primary-color);
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #2c2c2c 100%);
+            color: white;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="2" fill="rgba(255,107,53,0.1)"/><circle cx="80" cy="40" r="1" fill="rgba(255,107,53,0.1)"/><circle cx="40" cy="80" r="1.5" fill="rgba(255,107,53,0.1)"/></svg>');
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline-light:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 2rem;
+        }
+
+        .pricing-card {
+            background: #fff;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            height: 100%;
+        }
+
+        .pricing-card.featured {
+            background: var(--primary-color);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured .price {
+            color: white;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list li i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .dark-section {
+            background: var(--dark-bg);
+            color: white;
+        }
+
+        .footer {
+            background: #000;
+            color: white;
+            padding: 60px 0 20px;
+        }
+
+        .footer h5 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .footer a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: var(--primary-color);
+        }
+
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            line-height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: #e55a2b;
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                padding: 80px 0;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+                margin: 20px 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="/">Arzooz<span class="accent">.</span></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/portfolio">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="display-4 fw-bold mb-4">Website Design & Development</h1>
+                        <p class="lead mb-4">We bridge the gap between design and development, creating digital experiences that are both beautiful and functional.</p>
+                        <div class="d-flex flex-wrap gap-3">
+                            <a href="#contact" class="btn btn-primary btn-lg">Start Your Project</a>
+                            <a href="#portfolio" class="btn btn-outline-light btn-lg">View Our Work</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <i class="fas fa-laptop-code" style="font-size: 15rem; opacity: 0.1;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Overview -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2 class="mb-4">Bridging Design & <span class="accent">Development</span></h2>
+                    <p class="mb-4">The gap between design and development can be vast, often leading to final products that fall short of the original creative vision. Many developers, while technically proficient, lack the designer's eye for nuance and detail.</p>
+                    <p class="mb-4">At Arzooz, we bridge this gap. We're committed to creating digital experiences that are not only functional but also true to the designer's vision.</p>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i> Design-First Development</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Pixel-Perfect Implementation</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-check text-success me-2"></i> Responsive & Mobile-Optimized</li>
+                                <li><i class="fas fa-check text-success me-2"></i> Performance & SEO Focused</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <i class="fas fa-palette" style="font-size: 10rem; color: var(--primary-color); opacity: 0.3;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="section-padding" style="background: var(--light-gray);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="mb-4">Our Development <span class="accent">Process</span></h2>
+                    <p class="lead">Our proven process ensures your website exceeds expectations and delivers results.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-search"></i>
+                        </div>
+                        <h5 class="mb-3">1. Discovery & Planning</h5>
+                        <p>We dive deep into your business goals, target audience, and project requirements.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-pencil-ruler"></i>
+                        </div>
+                        <h5 class="mb-3">2. Design Analysis</h5>
+                        <p>Our team analyzes designs with a developer's eye, identifying potential challenges early.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h5 class="mb-3">3. Development</h5>
+                        <p>Using modern technologies, we build your website with clean code and optimal performance.</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-3 col-md-6">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h5 class="mb-3">4. Testing & Launch</h5>
+                        <p>Rigorous testing across devices ensures your website performs flawlessly before launch.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies Section -->
+    <section class="section-padding dark-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="mb-4">Technologies <span class="accent">We Use</span></h2>
+                    <p class="lead">We leverage cutting-edge technologies to build modern, scalable websites.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="text-center">
+                        <i class="fab fa-react" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h5 class="mb-3">Frontend Development</h5>
+                        <p>React, Vue.js, HTML5, CSS3, JavaScript, TypeScript, Tailwind CSS</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="text-center">
+                        <i class="fas fa-server" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h5 class="mb-3">Backend Development</h5>
+                        <p>Node.js, Python, PHP, Laravel, Express.js, RESTful APIs</p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="text-center">
+                        <i class="fab fa-wordpress" style="font-size: 4rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+                        <h5 class="mb-3">CMS & E-commerce</h5>
+                        <p>WordPress, Shopify, WooCommerce, Strapi, Contentful</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="mb-4">Investment <span class="accent">Options</span></h2>
+                    <p class="lead">Choose the package that best fits your business needs.</p>
+                </div>
+            </div>
+            
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card">
+                        <h5 class="mb-3">Landing Page</h5>
+                        <div class="price mb-3">$1,500</div>
+                        <p class="text-muted mb-4">Perfect for startups and small businesses</p>
+                        <ul class="feature-list mb-4">
+                            <li><i class="fas fa-check"></i> Single Page Design</li>
+                            <li><i class="fas fa-check"></i> Responsive Layout</li>
+                            <li><i class="fas fa-check"></i> Contact Form</li>
+                            <li><i class="fas fa-check"></i> Basic SEO Setup</li>
+                            <li><i class="fas fa-check"></i> 1 Month Support</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-primary w-100">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card featured">
+                        <div class="position-absolute top-0 start-50 translate-middle">
+                            <span class="badge bg-warning text-dark px-3 py-2">Popular</span>
+                        </div>
+                        <h5 class="mb-3">Business Website</h5>
+                        <div class="price mb-3">$3,500</div>
+                        <p class="mb-4" style="opacity: 0.9;">Ideal for growing businesses</p>
+                        <ul class="feature-list mb-4">
+                            <li><i class="fas fa-check"></i> Multi-Page Website</li>
+                            <li><i class="fas fa-check"></i> Custom Design</li>
+                            <li><i class="fas fa-check"></i> CMS Integration</li>
+                            <li><i class="fas fa-check"></i> Advanced SEO</li>
+                            <li><i class="fas fa-check"></i> 3 Months Support</li>
+                            <li><i class="fas fa-check"></i> Analytics Setup</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-light w-100">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <div class="pricing-card">
+                        <h5 class="mb-3">E-commerce</h5>
+                        <div class="price mb-3">$5,000</div>
+                        <p class="text-muted mb-4">Complete online store solution</p>
+                        <ul class="feature-list mb-4">
+                            <li><i class="fas fa-check"></i> Online Store</li>
+                            <li><i class="fas fa-check"></i> Payment Integration</li>
+                            <li><i class="fas fa-check"></i> Product Management</li>
+                            <li><i class="fas fa-check"></i> Order Management</li>
+                            <li><i class="fas fa-check"></i> 6 Months Support</li>
+                            <li><i class="fas fa-check"></i> Training Included</li>
+                        </ul>
+                        <a href="#contact" class="btn btn-outline-primary w-100">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section-padding" style="background: var(--primary-color);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center text-white">
+                    <h2 class="mb-4">Ready to Transform Your Digital Presence?</h2>
+                    <p class="lead mb-4">Let's discuss your project and create a website that truly represents your brand and drives results.</p>
+                    <div class="d-flex flex-wrap justify-content-center gap-3">
+                        <a href="#contact" class="btn btn-light btn-lg">Start Your Project</a>
+                        <a href="#portfolio" class="btn btn-outline-light btn-lg">View Portfolio</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5>Arzooz<span class="accent">.</span></h5>
+                    <p class="mb-3">We drive innovation and build brands through strategy, design, and technology.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5>Services</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Web Development</a></li>
+                        <li><a href="#">Digital Marketing</a></li>
+                        <li><a href="#">AI Automation</a></li>
+                        <li><a href="#">Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-2 col-md-6">
+                    <h5>Company</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Portfolio</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="col-lg-4 col-md-6">
+                    <h5>Contact Info</h5>
+                    <p><i class="fas fa-map-marker-alt me-2"></i> 1262 S Longwood Ave, Los Angeles, CA 90019</p>
+                    <p><i class="fas fa-phone me-2"></i> +1 (213) 772-0313</p>
+                    <p><i class="fas fa-envelope me-2"></i> info@arzooz.com</p>
+                </div>
+            </div>
+            
+            <hr class="my-4">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="mb-0">&copy; 2024 Arzooz. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="#" class="me-3">Privacy Policy</a>
+                    <a href="#" class="me-3">Terms of Service</a>
+                    <a href="#">Cookie Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(255, 255, 255, 0.95)';
+                navbar.style.backdropFilter = 'blur(10px)';
+            } else {
+                navbar.style.background = '#fff';
+                navbar.style.backdropFilter = 'none';
+            }
+        });
+    </script>
+</body>
+
+</html>

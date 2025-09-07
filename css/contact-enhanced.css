@@ -1,0 +1,276 @@
+    /* Enhanced Contact Form Styles */
+    .mil-contact-form-wrapper {
+        background: #f6f7f3;
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 60px 40px;
+        border: 1px solid rgba(148, 199, 44, 0.2);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+        border-color: black;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .mil-contact-form-wrapper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(148, 199, 44, 0.05) 0%, rgba(148, 199, 44, 0.02) 100%);
+        z-index: 1;
+    }
+
+    .mil-enhanced-form {
+        position: relative;
+        z-index: 2;
+    }
+
+    /* Input Frame Styling */
+    .mil-input-frame,
+    .mil-textarea-frame {
+        position: relative;
+        margin-bottom: 30px;
+    }
+
+    .mil-input-frame input,
+    .mil-textarea-frame textarea {
+        width: 100%;
+        padding: 20px 25px;
+        border: 0.5px solid black;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        font-size: 16px;
+        color: #000000;
+        transition: all 0.3s ease;
+        outline: none;
+        font-family: inherit;
+    }
+
+    .mil-input-frame input::placeholder,
+    .mil-textarea-frame textarea::placeholder {
+        color: #000000;
+        opacity: 1;
+    }
+
+    .mil-input-frame input:focus,
+    .mil-textarea-frame textarea:focus {
+        border-color: #94C72C;
+        background: rgba(255, 255, 255, 0.95);
+        box-shadow: 0 0 0 3px rgba(148, 199, 44, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .mil-textarea-frame textarea {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    /* Animated Border Effect */
+    .mil-input-border {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 2px;
+        width: 0;
+        background: linear-gradient(90deg, #94C72C, #a9e72c);
+        transition: width 0.3s ease;
+    }
+
+    .mil-input-frame input:focus + .mil-input-border,
+    .mil-textarea-frame textarea:focus + .mil-input-border {
+        width: 100%;
+    }
+
+    /* Contact Buttons in Banner */
+    .mil-contact-buttons {
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .mil-calendly-btn {
+        background: linear-gradient(135deg, #94C72C, #a9e72c);
+        color: white;
+        padding: 15px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .mil-calendly-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(148, 199, 44, 0.3);
+        color: white;
+    }
+
+    /* Submit Button Enhancement */
+    .mil-submit-btn {
+        background: #94C72C;
+        border: 2px solid #94C72C;
+        color: white;
+        transition: all 0.3s ease;
+        padding: 15px 30px;
+        border-radius: 50px;
+    }
+
+    .mil-submit-btn:hover {
+        background: white;
+        color:#94C72C ;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(148, 199, 44, 0.3);
+    }
+
+    /* Alternative Contact Section */
+    .mil-contact-alternatives {
+        margin-top: 60px;
+        padding-top: 40px;
+    }
+
+    .mil-divider-text {
+        position: relative;
+        margin: 40px 0;
+    }
+
+    .mil-divider-text::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(148, 199, 44, 0.3), transparent);
+        z-index: 1;
+    }
+
+    .mil-divider-text span {
+        background: white;
+        padding: 0 20px;
+        color: #94C72C;
+        font-weight: 600;
+        position: relative;
+        z-index: 2;
+    }
+
+    .mil-calendly-button {
+        background: linear-gradient(135deg, #94C72C, #a9e72c);
+        color: white;
+        padding: 18px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        font-weight: 600;
+        border: none;
+        cursor: pointer;
+    }
+
+    .mil-calendly-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(148, 199, 44, 0.4);
+        color: white;
+        background: linear-gradient(135deg, #a9e72c, #94C72C);
+    }
+
+    .mil-calendly-button i {
+        font-size: 18px;
+    }
+
+    /* Form Animation Effects */
+    .mil-input-frame {
+        overflow: hidden;
+    }
+
+    .mil-input-frame input,
+    .mil-textarea-frame textarea {
+        transform: translateY(10px);
+        opacity: 0;
+        animation: slideUpFade 0.6s ease forwards;
+    }
+
+    @keyframes slideUpFade {
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    /* Stagger animation delays */
+    .mil-input-frame:nth-child(1) input { animation-delay: 0.1s; }
+    .mil-input-frame:nth-child(2) input { animation-delay: 0.2s; }
+    .mil-textarea-frame textarea { animation-delay: 0.3s; }
+
+    /* Responsive Design */
+    @media (max-width: 991px) {
+        .mil-contact-form-wrapper {
+            padding: 40px 30px;
+        }
+
+        .mil-contact-buttons {
+            flex-direction: column;
+            gap: 15px;
+        }
+    }
+
+    @media (max-width: 767px) {
+        .mil-contact-form-wrapper {
+            padding: 30px 20px;
+        }
+
+        .mil-input-frame input,
+        .mil-textarea-frame textarea {
+            padding: 18px 20px;
+            font-size: 15px;
+        }
+
+        .mil-calendly-button {
+            padding: 15px 25px;
+            font-size: 14px;
+        }
+    }
+
+    /* Form Validation Styles */
+    .mil-input-frame input:invalid:not(:placeholder-shown),
+    .mil-textarea-frame textarea:invalid:not(:placeholder-shown) {
+        border-color: #ff6b6b;
+        background: rgba(255, 107, 107, 0.05);
+    }
+
+    .mil-input-frame input:valid:not(:placeholder-shown),
+    .mil-textarea-frame textarea:valid:not(:placeholder-shown) {
+        border-color: #94C72C;
+        background: rgba(148, 199, 44, 0.05);
+    }
+
+    /* Loading state for submit button */
+    .mil-submit-btn.loading {
+        opacity: 0.7;
+        pointer-events: none;
+    }
+
+    .mil-submit-btn.loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        margin: auto;
+        border: 2px solid transparent;
+        border-top-color: currentColor;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    
