@@ -4,6 +4,17 @@
     "@vercel/edge": "^0.1.2",
     "gulp": "^5.0.0",
     "gulp-sass": "^5.1.0",
+    "nodemailer": "^7.0.6",
     "sass": "^1.77.8"
-  }
+  },
+  "name": "arzooz-main",
+  "version": "1.0.0",
+  "description": "--- name: HTML Starter slug: html-starter-with-analytics description: HTML5 template with analytics and advanced routing configuration. deployUrl: https://vercel.com/new/clone?repository-url=https://github.com/vercel/examples/tree/main/solutions/html&project-name=html relatedTemplates:   - nextjs-boilerplate ---",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

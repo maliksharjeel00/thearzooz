@@ -3700,3 +3700,18 @@ html.is-animating .mil-menu-frame {
   opacity: 0;
   transition-delay: .3s
 }
+
+/* === Hero Section Full Center Fix === */
+.mil-banner .container {
+  align-items: center !important; /* Vertical center */
+  justify-content: center !important; /* Horizontal center */
+  text-align: center; /* Center text */
+}
+
+.mil-banner-content {
+  padding-bottom: 0 !important; /* Remove extra bottom padding */
+}
+
+.mil-banner-content h1 {
+  margin: 0 !important; /* Remove extra margin */
+}

@@ -1,386 +1,152 @@
 <!DOCTYPE html>
-<html lang="zxx">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
-    <!-- bootstrap grid css -->
-    <link rel="stylesheet" href="/css/plugins/bootstrap-grid.css">
-    <!-- font awesome css -->
-    <link rel="stylesheet" href="/css/plugins/font-awesome.min.css">
-    <!-- swiper css -->
-    <link rel="stylesheet" href="/css/plugins/swiper.min.css">
-    <!-- fancybox css -->
-    <link rel="stylesheet" href="/css/plugins/fancybox.min.css">
-    <!-- ashley scss -->
-    <link rel="stylesheet" href="/scss/style.css">
+    <title>Project Details - Arzooz</title>
+    <link href="css/plugins/bootstrap-grid.css" rel="stylesheet"/>
+    <link href="scss/style.css" rel="stylesheet"/>
     
-    <!-- Custom Project Page Styles -->
     <style>
-        .mil-project-showcase {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 120px 0;
-            position: relative;
-        }
-
-        .mil-project-content {
-            text-align: center;
-            max-width: 1000px;
-            width: 100%;
-        }
-
-        .mil-project-title {
-            font-size: 48px;
-            font-weight: 400;
-            margin-bottom: 20px;
-            color: var(--mil-dark-color);
-        }
-
-        .mil-project-description {
-            font-size: 18px;
-            color: var(--mil-muted-color);
-            max-width: 700px;
-            margin: 0 auto 60px auto;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
             line-height: 1.6;
         }
 
-        .mil-project-slider {
-            margin-bottom: 60px;
-            position: relative;
+        .project-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
 
-        .mil-project-slider .swiper {
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        .project-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .mil-project-slider .swiper-slide {
-            aspect-ratio: 16/10;
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #333;
+            margin-bottom: 15px;
         }
 
-        .mil-project-slider .swiper-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-
-        .mil-project-slider .swiper-button-next,
-        .mil-project-slider .swiper-button-prev {
-            width: 50px;
-            height: 50px;
-            margin-top: -25px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            color: var(--mil-dark-color);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s;
-        }
-
-        .mil-project-slider .swiper-button-next:hover,
-        .mil-project-slider .swiper-button-prev:hover {
-            background: var(--mil-accent-color);
+        .project-type {
+            background: #94C72C;
             color: white;
-            transform: scale(1.1);
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
         }
 
-        .mil-project-slider .swiper-button-next::after,
-        .mil-project-slider .swiper-button-prev::after {
+        .project-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .project-content {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .project-content h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-weight: 400;
+        }
+
+        .project-content p {
+            color: #666;
             font-size: 16px;
-            font-weight: bold;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
-        .mil-project-slider .swiper-pagination {
-            bottom: -50px;
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
         }
 
-        .mil-project-slider .swiper-pagination-bullet {
-            width: 12px;
-            height: 12px;
-            background: var(--mil-muted-color);
-            opacity: 0.3;
-            transition: all 0.3s;
+        .tech-tag {
+            background: #f1f3f4;
+            color: #333;
+            padding: 6px 15px;
+            border-radius: 15px;
+            font-size: 13px;
         }
 
-        .mil-project-slider .swiper-pagination-bullet-active {
-            background: var(--mil-accent-color);
-            opacity: 1;
-            transform: scale(1.2);
+        .back-link {
+            display: inline-block;
+            color: #94C72C;
+            text-decoration: none;
+            font-weight: 500;
+            margin-bottom: 30px;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 1024px) {
-            .mil-project-showcase {
-                padding: 100px 0;
-            }
-            
-            .mil-project-title {
-                font-size: 40px;
-            }
-            
-            .mil-project-description {
-                font-size: 17px;
-                margin-bottom: 50px;
-            }
-            
-            .mil-project-slider {
-                margin-bottom: 50px;
-            }
+        .back-link:hover {
+            text-decoration: underline;
         }
 
         @media (max-width: 768px) {
-            .mil-project-showcase {
-                padding: 80px 0;
+            .project-container {
+                padding: 20px 10px;
             }
             
-            .mil-project-title {
-                font-size: 32px;
+            .project-title {
+                font-size: 2rem;
             }
             
-            .mil-project-description {
-                font-size: 16px;
-                margin-bottom: 40px;
-            }
-            
-            .mil-project-slider {
-                margin-bottom: 40px;
-            }
-            
-            .mil-project-slider .swiper-button-next,
-            .mil-project-slider .swiper-button-prev {
-                width: 40px;
-                height: 40px;
-                margin-top: -20px;
-            }
-            
-            .mil-project-slider .swiper-button-next::after,
-            .mil-project-slider .swiper-button-prev::after {
-                font-size: 14px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .mil-project-showcase {
-                padding: 60px 0;
-            }
-            
-            .mil-project-title {
-                font-size: 28px;
-            }
-            
-            .mil-project-description {
-                font-size: 15px;
-                margin-bottom: 30px;
-            }
-            
-            .mil-project-slider {
-                margin-bottom: 30px;
-            }
-            
-            .mil-project-slider .swiper-slide {
-                aspect-ratio: 16/12;
-            }
-        }
-
-        /* Ensure single screen layout */
-        @media (max-height: 800px) {
-            .mil-project-showcase {
-                padding: 40px 0;
-            }
-            
-            .mil-project-title {
-                font-size: 36px;
-                margin-bottom: 15px;
-            }
-            
-            .mil-project-description {
-                margin-bottom: 30px;
-            }
-            
-            .mil-project-slider {
-                margin-bottom: 30px;
+            .project-content {
+                padding: 25px;
             }
         }
     </style>
-    
-    <!-- page name -->
-    <title>Inouvia - Project Detail</title>
 </head>
 
 <body>
-    <!-- wrapper -->
-    <div class="mil-wrapper" id="top">
-
-        <!-- cursor -->
-        <div class="mil-ball">
-            <span class="mil-icon-1">
-                <svg viewBox="0 0 128 128">
-                    <path d="M106.1,41.9c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2L116.8,61H11.2l14.9-14.9c1.2-1.2,1.2-3.1,0-4.2	c-1.2-1.2-3.1-1.2-4.2,0l-20,20c-1.2,1.2-1.2,3.1,0,4.2l20,20c0.6,0.6,1.4,0.9,2.1,0.9s1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2	L11.2,67h105.5l-14.9,14.9c-1.2,1.2-1.2,3.1,0,4.2c0.6,0.6,1.4,0.9,2.1,0.9s1.5-0.3,2.1-0.9l20-20c1.2-1.2,1.2-3.1,0-4.2L106.1,41.9	z" />
-                </svg>
-            </span>
-            <div class="mil-more-text">More</div>
-            <div class="mil-choose-text">Choose</div>
-        </div>
-        <!-- cursor end -->
-
-        <!-- scrollbar progress -->
-        <div class="mil-progress-track">
-            <div class="mil-progress"></div>
-        </div>
-        <!-- scrollbar progress end -->
-
-        <!-- frame -->
-        <div class="mil-frame">
-            <div class="mil-frame-top">
-                <a href="/" class="mil-logo">A<span class="mil-accent">.</span></a>
-                <div class="mil-menu-btn">
-                    <span></span>
-                </div>
-            </div>
-            <div class="mil-frame-bottom">
-                <div class="mil-current-page"></div>
-                <div class="mil-back-to-top">
-                    <a href="#top" class="mil-link mil-dark mil-arrow-place">
-                        <span>Back to top</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <!-- frame end -->
-
-        <!-- content -->
-        <div class="mil-content">
-            <div id="swupMain" class="mil-main-transition">
-
-                <!-- project showcase -->
-                <section class="mil-project-showcase">
-                    <div class="container">
-                        <div class="mil-project-content">
-                            
-                            <!-- Project Title -->
-                            <h1 class="mil-project-title mil-up">Inouvia</h1>
-                            
-                            <!-- Project Description -->
-                            <p class="mil-project-description mil-up">
-                                A cutting-edge digital solution crafted with precision and modern design principles.<br>
-                                Transforming user experiences through innovative technology and seamless functionality.
-                            </p>
-                            
-                            <!-- Project Slider -->
-                            <div class="mil-project-slider mil-up">
-                                <div class="swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <img src="/img/projects/inouvia-1.png" alt="Inouvia Project Screenshot 1">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/img/projects/inouvia-2.png" alt="Inouvia Project Screenshot 2">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/img/projects/inouvia-3.png" alt="Inouvia Project Screenshot 3">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/img/projects/inouvia-4.png" alt="Inouvia Project Screenshot 4">
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <img src="/img/projects/inouvia-5.png" alt="Inouvia Project Screenshot 5">
-                                        </div>
-                                    </div>
-                                    
-                                    <!-- Navigation arrows -->
-                                    <div class="swiper-button-next"></div>
-                                    <div class="swiper-button-prev"></div>
-                                    
-                                    <!-- Pagination -->
-                                    <div class="swiper-pagination"></div>
-                                </div>
-                            </div>
-                            
-                            <!-- Back Button -->
-                            <div class="mil-up">
-                                <a href="/portfolio" class="mil-button mil-arrow-place">
-                                    <span><b>Back to Portfolio</b> &nbsp; &nbsp; &nbsp; </span>
-                                </a>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </section>
-                <!-- project showcase end -->
-
-            </div>
-        </div>
-        <!-- content end -->
+    <div class="project-container">
+        <a href="/portfolio" class="back-link">← Back to Portfolio</a>
         
+        <div class="project-header">
+            <h1 class="project-title">Inouvia Wordpress Website Project</h1>
+            <span class="project-type">Web Development</span>
+        </div>
+
+        <img src="/img/projects/inouvia-1.png" alt="Project Screenshot" class="project-image" />
+        <img src="/img/projects/inouvia-2.png" alt="Project Screenshot" class="project-image" />
+        <img src="/img/projects/inouvia-3.png" alt="Project Screenshot" class="project-image" />
+        <img src="/img/projects/inouvia-4.png" alt="Project Screenshot" class="project-image" />
+        <img src="/img/projects/inouvia-5.png" alt="Project Screenshot" class="project-image" />
+        
+
+        <div class="project-content">
+            <h3>About this Project</h3>
+            <p>Inouvia is a technology solutions company specializing in Salesforce, web, and mobile development to help businesses streamline operations and grow digitally. With 10+ years of expertise and certified professionals, they deliver tailored solutions backed by a perfect 5/5 customer satisfaction rating. Headquartered in Georgia, USA, Inouvia offers flexible pricing models to suit diverse business needs.</p>
+            
+
+            <h3>Technologies Used</h3>
+            <div class="tech-tags">
+                <span class="tech-tag">Wordpress</span>
+            </div>
+        </div>
     </div>
-    <!-- wrapper end -->
-
-    <!-- jQuery js -->
-    <script src="/js/plugins/jquery.min.js"></script>
-    <!-- swiper js -->
-    <script src="/js/plugins/swiper.min.js"></script>
-    <!-- gsap js -->
-    <script src="/js/plugins/gsap.min.js"></script>
-    <!-- ashley js -->
-    <script src="/js/main.js"></script>
-
-    <!-- Project Slider Initialization -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const projectSwiper = new Swiper('.mil-project-slider .swiper', {
-                loop: true,
-                centeredSlides: true,
-                slidesPerView: 1,
-                spaceBetween: 0,
-                speed: 800,
-                autoplay: {
-                    delay: 4000,
-                    disableOnInteraction: false,
-                },
-                effect: 'fade',
-                fadeEffect: {
-                    crossFade: true
-                },
-                pagination: {
-                    el: '.mil-project-slider .swiper-pagination',
-                    clickable: true,
-                    dynamicBullets: false,
-                },
-                navigation: {
-                    nextEl: '.mil-project-slider .swiper-button-next',
-                    prevEl: '.mil-project-slider .swiper-button-prev',
-                },
-                on: {
-                    init: function() {
-                        // Add entrance animations
-                        gsap.fromTo('.mil-project-title', 
-                            { y: 50, opacity: 0 }, 
-                            { y: 0, opacity: 1, duration: 1, delay: 0.2 }
-                        );
-                        gsap.fromTo('.mil-project-description', 
-                            { y: 30, opacity: 0 }, 
-                            { y: 0, opacity: 1, duration: 1, delay: 0.4 }
-                        );
-                        gsap.fromTo('.mil-project-slider', 
-                            { y: 40, opacity: 0 }, 
-                            { y: 0, opacity: 1, duration: 1, delay: 0.6 }
-                        );
-                        gsap.fromTo('.mil-button', 
-                            { y: 30, opacity: 0 }, 
-                            { y: 0, opacity: 1, duration: 1, delay: 0.8 }
-                        );
-                    }
-                }
-            });
-        });
-    </script>
-
 </body>
 </html>
