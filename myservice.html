@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Arzooz Services - Professional web development, digital marketing, AI automation, and creative consulting solutions">
+    <title>Our Services - Arzooz</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <style>
+        /* Base Styles from Homepage */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        .mil-wrapper {
+            position: relative;
+        }
+
+        /* Frame (Header) */
+        .mil-frame {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .mil-frame-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 60px;
+            pointer-events: all;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .mil-logo {
+            font-size: 28px;
+            font-weight: 600;
+            color: #000;
+            text-decoration: none;
+            letter-spacing: -1px;
+        }
+
+        .mil-accent {
+            color: #94C72C;
+        }
+
+        .mil-menu-btn {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            cursor: pointer;
+            pointer-events: all;
+        }
+
+        .mil-menu-btn span {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #000;
+            transform: translateY(-50%);
+        }
+
+        .mil-menu-btn span::before,
+        .mil-menu-btn span::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #000;
+            transition: all 0.3s ease;
+        }
+
+        .mil-menu-btn span::before {
+            top: -8px;
+        }
+
+        .mil-menu-btn span::after {
+            bottom: -8px;
+        }
+
+        /* Content */
+        .mil-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Banner Section */
+        .mil-banner {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mil-dark-bg {
+            background: #0a0a0a;
+            color: #fff;
+        }
+
+        .mi-invert-fix {
+            position: relative;
+            z-index: 2;
+        }
+
+        .mil-animation-frame {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .mil-animation {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(148, 199, 44, 0.1) 0%, transparent 70%);
+        }
+
+        .mil-animation.mil-position-1 {
+            width: 800px;
+            height: 800px;
+            top: -200px;
+            right: -200px;
+        }
+
+        .mil-animation.mil-position-2 {
+            width: 400px;
+            height: 400px;
+            bottom: -100px;
+            left: -100px;
+        }
+
+        .mil-animation.mil-position-3 {
+            width: 200px;
+            height: 200px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .mil-gradient {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+            z-index: 1;
+        }
+
+        .mil-banner-content {
+            position: relative;
+            z-index: 3;
+            padding: 120px 0 60px;
+        }
+
+        .mil-banner-content h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 60px;
+            color: #f5f5f5;
+        }
+
+        .mil-thin {
+            font-weight: 100;
+        }
+
+        .mil-muted {
+            color: #b5b5b5;
+        }
+
+        .mil-mb-60 {
+            margin-bottom: 60px;
+        }
+
+        .mil-up {
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .mil-up:nth-child(1) { animation-delay: 0.2s; }
+        .mil-up:nth-child(2) { animation-delay: 0.4s; }
+        .mil-up:nth-child(3) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .mil-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px 40px;
+            background: transparent;
+            color: #fff;
+            border: 1px solid #94C72C;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: all 0.4s ease;
+            margin-right: 30px;
+        }
+
+        .mil-button:hover {
+            background: #94C72C;
+            color: #000;
+        }
+
+        .mil-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #b5b5b5;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .mil-link:hover {
+            color: #94C72C;
+        }
+
+        /* Services Section */
+        .mil-services-section {
+            padding: 120px 0;
+            background: #fff;
+        }
+
+        .mil-suptitle {
+            display: block;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 60px;
+            max-width: 800px;
+        }
+
+        .mil-suptitle-right {
+            margin-left: auto;
+        }
+
+        .mil-suptitle-dark {
+            color: #333;
+        }
+
+        .mil-center {
+            text-align: center;
+        }
+
+        .mil-services-title {
+            font-size: 3.5rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 120px;
+            color: #000;
+        }
+
+        /* Service Cards */
+        .mil-service-card {
+            background: #fff;
+            padding: 60px 0;
+            margin-bottom: 80px;
+            border-bottom: 1px solid #e5e5e5;
+            transition: all 0.5s ease;
+        }
+
+        .mil-service-card:last-child {
+            border-bottom: none;
+        }
+
+        .mil-service-card:hover {
+            background: #fafafa;
+        }
+
+        .mil-service-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .mil-service-number {
+            font-size: 6rem;
+            font-weight: 100;
+            color: #94C72C;
+            line-height: 1;
+            min-width: 120px;
+        }
+
+        .mil-service-info {
+            flex: 1;
+        }
+
+        .mil-service-info h2 {
+            font-size: 2.8rem;
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 20px;
+            color: #000;
+        }
+
+        .mil-service-subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .mil-service-description {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 40px;
+            max-width: 700px;
+        }
+
+        /* Service Features Grid */
+        .mil-service-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px 40px;
+            margin-bottom: 50px;
+        }
+
+        .mil-feature-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .mil-feature-item:hover {
+            padding-left: 20px;
+            border-bottom-color: #94C72C;
+        }
+
+        .mil-feature-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #94C72C;
+            font-size: 14px;
+        }
+
+        .mil-feature-text {
+            font-weight: 500;
+            color: #333;
+            font-size: 15px;
+        }
+
+        .mil-service-cta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .mil-service-price {
+            font-size: 18px;
+            font-weight: 600;
+            color: #94C72C;
+        }
+
+        .mil-button-sm {
+            padding: 15px 30px;
+            font-size: 14px;
+            background: #94C72C;
+            color: #000;
+            border: 1px solid #94C72C;
+        }
+
+        .mil-button-sm:hover {
+            background: transparent;
+            color: #94C72C;
+        }
+
+        /* Call to Action */
+        .mil-cta-section {
+            padding: 120px 0;
+            background: #0a0a0a;
+            color: #fff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .mil-cta-section .mil-animation {
+            background: radial-gradient(circle, rgba(148, 199, 44, 0.05) 0%, transparent 70%);
+        }
+
+        .mil-cta-content h2 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            line-height: 1.3;
+            margin-bottom: 30px;
+            color: #f5f5f5;
+        }
+
+        .mil-cta-content p {
+            font-size: 18px;
+            color: #b5b5b5;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .mil-frame-top {
+                padding: 0 40px;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .mil-banner-content h1 {
+                font-size: 3rem;
+            }
+
+            .mil-services-title {
+                font-size: 2.5rem;
+            }
+
+            .mil-service-header {
+                flex-direction: column;
+                gap: 30px;
+                text-align: center;
+            }
+
+            .mil-service-number {
+                min-width: auto;
+            }
+
+            .mil-service-info h2 {
+                font-size: 2.2rem;
+            }
+
+            .mil-service-features {
+                grid-template-columns: 1fr;
+            }
+
+            .mil-service-cta {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mil-frame-top {
+                padding: 0 20px;
+            }
+
+            .mil-banner-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .mil-button {
+                margin-right: 15px;
+                margin-bottom: 15px;
+            }
+
+            .mil-service-card {
+                padding: 40px 0;
+            }
+
+            .mil-service-number {
+                font-size: 4rem;
+            }
+
+            .mil-service-info h2 {
+                font-size: 1.8rem;
+            }
+
+            .mil-cta-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="mil-wrapper">
+        <!-- Frame -->
+        <div class="mil-frame">
+            <div class="mil-frame-top">
+                <a href="/" class="mil-logo">Arzooz<span class="mil-accent">.</span></a>
+                <div class="mil-menu-btn">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="mil-content">
+            <!-- Banner -->
+            <section class="mil-banner mil-dark-bg">
+                <div class="mi-invert-fix">
+                    <div class="mil-animation-frame">
+                        <div class="mil-animation mil-position-1"></div>
+                        <div class="mil-animation mil-position-2"></div>
+                        <div class="mil-animation mil-position-3"></div>
+                    </div>
+                    <div class="mil-gradient"></div>
+                    <div class="container">
+                        <div class="mil-banner-content">
+                            <h1 class="mil-muted mil-up">
+                                <span class="mil-thin">Professional</span> Services
+                                <span class="mil-thin">that</span> Drive
+                                <span class="mil-thin">Innovation and</span> Growth
+                            </h1>
+                            <div class="mil-up">
+                                <a class="mil-button" href="#services">
+                                    <span>Explore Services</span>
+                                </a>
+                                <a class="mil-link mil-muted" href="/contact/index.html">
+                                    <span>Get Started</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="mil-services-section">
+                <div class="container">
+                    <div class="mil-up">
+                        <span class="mil-suptitle mil-suptitle-right mil-suptitle-dark">
+                            Comprehensive digital solutions designed to help your business thrive in today's competitive landscape through innovative technology and strategic expertise.
+                        </span>
+                    </div>
+                    
+                    <h2 class="mil-services-title mil-center mil-up">
+                        Our <span class="mil-accent">Core</span> Services
+                        <span class="mil-thin">for Digital</span> Excellence
+                    </h2>
+
+                    <!-- Service 1: Digital Marketing -->
+                    <div class="mil-service-card mil-up">
+                        <div class="mil-service-header">
+                            <div class="mil-service-number">01</div>
+                            <div class="mil-service-info">
+                                <h2>Digital Marketing <span class="mil-thin">and</span> Paid Ads</h2>
+                                <p class="mil-service-subtitle">Boost your online presence and drive targeted traffic to your business</p>
+                                <p class="mil-service-description">
+                                    Our creative agency is a team of professionals focused on helping your brand grow. We specialize in creating data-driven marketing campaigns that deliver measurable results, increase brand visibility, and maximize your return on investment through strategic digital marketing solutions.
+                                </p>
+                                <div class="mil-service-features">
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Facebook Ads</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fab fa-google"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Google Ads</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </div>
+                                        <span class="mil-feature-text">LinkedIn B2B Ads</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fab fa-meta"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Meta Ads</span>
+                                    </div>
+                                </div>
+                                <div class="mil-service-cta">
+                                    <div class="mil-service-price">Starting from $199/month</div>
+                                    <a href="/contact/index.html" class="mil-button mil-button-sm">
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 2: Website Development -->
+                    <div class="mil-service-card mil-up">
+                        <div class="mil-service-header">
+                            <div class="mil-service-number">02</div>
+                            <div class="mil-service-info">
+                                <h2>Website Design <span class="mil-thin">and</span> Development</h2>
+                                <p class="mil-service-subtitle">Custom web and mobile applications that bring your ideas to life</p>
+                                <p class="mil-service-description">
+                                    We make ideas come to life with custom web and mobile applications. Our team combines technical expertise with creative vision to deliver websites that not only look stunning but also perform exceptionally well, ensuring your digital presence stands out in the competitive online landscape.
+                                </p>
+                                <div class="mil-service-features">
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-palette"></i>
+                                        </div>
+                                        <span class="mil-feature-text">UI Design</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-cogs"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Backend Development</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fab fa-wordpress"></i>
+                                        </div>
+                                        <span class="mil-feature-text">WordPress Websites</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-mobile-alt"></i>
+                                        </div>
+                                        <span class="mil-feature-text">User Friendly Design</span>
+                                    </div>
+                                </div>
+                                <div class="mil-service-cta">
+                                    <div class="mil-service-price">Starting from $899</div>
+                                    <a href="/contact/index.html" class="mil-button mil-button-sm">
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 3: AI Automation -->
+                    <div class="mil-service-card mil-up">
+                        <div class="mil-service-header">
+                            <div class="mil-service-number">03</div>
+                            <div class="mil-service-info">
+                                <h2>AI Automation <span class="mil-thin">using</span> N8N, Make, Zapier</h2>
+                                <p class="mil-service-subtitle">Streamline your business processes with intelligent automation solutions</p>
+                                <p class="mil-service-description">
+                                    Ignite your online presence with dynamic automation strategies that optimize workflows and increase efficiency. Our team implements cutting-edge AI automation tools to help businesses save time, reduce costs, and improve productivity through intelligent process automation.
+                                </p>
+                                <div class="mil-service-features">
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-blog"></i>
+                                        </div>
+                                        <span class="mil-feature-text">SEO Blog Post Automation</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-envelope"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Marketing Automation</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-users"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Lead Generation Automation</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-paper-plane"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Email Marketing Automation</span>
+                                    </div>
+                                </div>
+                                <div class="mil-service-cta">
+                                    <div class="mil-service-price">Starting from $599</div>
+                                    <a href="/contact/index.html" class="mil-button mil-button-sm">
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service 4: Creative Consulting -->
+                    <div class="mil-service-card mil-up">
+                        <div class="mil-service-header">
+                            <div class="mil-service-number">04</div>
+                            <div class="mil-service-info">
+                                <h2>Creative Consulting <span class="mil-thin">and</span> Concept Development</h2>
+                                <p class="mil-service-subtitle">Strategic guidance and innovative solutions for business growth</p>
+                                <p class="mil-service-description">
+                                    Our creative agency is a team of professionals focused on helping your brand grow through strategic consulting and innovative concept development. We provide expert guidance, creative solutions, and strategic insights to help your business navigate challenges and achieve sustainable growth.
+                                </p>
+                                <div class="mil-service-features">
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-comments"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Consultation</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-chart-bar"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Marketing Strategy</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-seedling"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Brand Growing Techniques</span>
+                                    </div>
+                                    <div class="mil-feature-item">
+                                        <div class="mil-feature-icon">
+                                            <i class="fas fa-puzzle-piece"></i>
+                                        </div>
+                                        <span class="mil-feature-text">Problem Solving</span>
+                                    </div>
+                                </div>
+                                <div class="mil-service-cta">
+                                    <div class="mil-service-price">Custom Pricing</div>
+                                    <a href="/contact/index.html" class="mil-button mil-button-sm">
+                                        <span>Learn More</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Call to Action -->
+            <section class="mil-cta-section">
+                <div class="mi-invert-fix">
+                    <div class="mil-animation-frame">
+                        <div class="mil-animation mil-position-1"></div>
+                        <div class="mil-animation mil-position-2"></div>
+                    </div>
+                    <div class="container">
+                        <div class="mil-cta-content">
+                            <h2 class="mil-up">
+                                Ready to bring your <span class="mil-thin">ideas to</span> life?
+                                We're <span class="mil-thin">here to help</span>
+                            </h2>
+                            <p class="mil-up">
+                                Looking to make your mark? We'll help you turn your project into a success story with our comprehensive digital solutions.
+                            </p>
+                            <div class="mil-up">
+                                <a class="mil-button" href="/contact/index.html">
+                                    <span>Contact us</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with mil-up class
+        document.querySelectorAll('.mil-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Service card hover effects
+        document.querySelectorAll('.mil-service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-5px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    </script>
+</body>
+</html>
