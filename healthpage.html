@@ -1,0 +1,1845 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Arzooz helps Health & Wellness brands scale with high-converting, compliance-focused digital marketing.">
+  <title>Arzooz – Health & Wellness Marketing Agency</title>
+
+  <!-- Google Fonts: Outfit (matches existing site) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* =========================================
+       CSS VARIABLES — ARZOOZ BRAND TOKENS
+    ========================================= */
+    :root {
+      --green:       #94C72C;
+      --green-light: #a9e72c;
+      --green-glow:  rgba(148,199,44,.18);
+      --green-soft:  rgba(148,199,44,.08);
+      --dark:        #0b0b0b;
+      --dark-2:      #111111;
+      --dark-card:   #151515;
+      --dark-border: rgba(255,255,255,.08);
+      --muted:       rgba(255,255,255,.85);
+      --light-soft:  rgba(255,255,255,.42);
+      --body-color:  rgba(255,255,255,.55);
+      --white:       #ffffff;
+      --soft-bg:     #f2f2f2;
+      --text-dark:   #111;
+      --radius-sm:   12px;
+      --radius-md:   20px;
+      --radius-lg:   32px;
+      --radius-pill: 70px;
+      --font:        "Outfit", sans-serif;
+      --transition:  .38s cubic-bezier(0,0,.36,1);
+    }
+
+    /* =========================================
+       RESET / BASE
+    ========================================= */
+    *, *::before, *::after { box-sizing: border-box; padding: 0; margin: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font);
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--body-color);
+      background: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; padding: 0; margin: 0; }
+
+    /* =========================================
+       TYPOGRAPHY
+    ========================================= */
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font);
+      color: var(--muted);
+      font-weight: 500;
+      line-height: 1.15;
+    }
+    h1 { font-size: clamp(36px, 6vw, 82px); }
+    h2 { font-size: clamp(30px, 4.5vw, 62px); }
+    h3 { font-size: clamp(22px, 3vw, 38px); }
+    h4 { font-size: clamp(18px, 2vw, 26px); }
+    h5 { font-size: 20px; }
+    h6 { font-size: 17px; }
+
+.hero-title{
+font-size: clamp(48px,5vw,88px);
+line-height:1.1;
+letter-spacing:-1px;
+max-width:900px;
+}
+
+    .mil-thin  { font-weight: 100; }
+    .mil-accent { color: var(--green); }
+    .mil-muted  { color: var(--muted); }
+    .mil-light-soft { color: var(--light-soft); }
+    .mil-center { text-align: center; }
+    .mil-upper  { text-transform: uppercase; letter-spacing: 2px; font-size: 12px; font-weight: 500; }
+
+    /* =========================================
+       LAYOUT UTILS
+    ========================================= */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 30px; }
+    .row { display: flex; flex-wrap: wrap; margin: 0 -15px; }
+    [class^="col-"] { padding: 0 15px; }
+    .col-12  { width: 100%; }
+    .col-6   { width: 50%; }
+    .col-4   { width: 33.333%; }
+    .col-3   { width: 25%; }
+    .col-8   { width: 66.666%; }
+    @media(max-width:992px) {
+      .col-md-12  { width:100%; }
+      .col-md-6   { width:50%; }
+    }
+    @media(max-width:768px) {
+      .col-sm-12 { width: 100%; }
+    }
+
+    .mil-p-120 { padding-top: 120px; padding-bottom: 120px; }
+    .mil-p-80  { padding-top: 80px;  padding-bottom: 80px; }
+    .mil-pt-0  { padding-top: 0; }
+    .mil-mb-15 { margin-bottom: 15px; }
+    .mil-mb-20 { margin-bottom: 20px; }
+    .mil-mb-30 { margin-bottom: 30px; }
+    .mil-mb-45 { margin-bottom: 45px; }
+    .mil-mb-60 { margin-bottom: 60px; }
+    .mil-mb-80 { margin-bottom: 80px; }
+    .mil-mt-60 { margin-top: 60px; }
+
+    @media(max-width:992px) {
+      .mil-p-120 { padding-top: 80px; padding-bottom: 80px; }
+    }
+    @media(max-width:768px) {
+      .mil-p-120 { padding-top: 60px; padding-bottom: 60px; }
+    }
+
+    /* =========================================
+       SCROLL PROGRESS BAR
+    ========================================= */
+    .mil-progress-track {
+      position: fixed; top: 0; right: 0; z-index: 999;
+      width: 4px; height: 100%; background: rgba(0,0,0,.3);
+    }
+    .mil-progress { width: 4px; height: 0; background: var(--green); transition: height .1s; }
+
+    /* =========================================
+       NAVIGATION / HEADER
+    ========================================= */
+    .mil-nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      padding: 22px 0;
+      background: rgba(11,11,11,.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--dark-border);
+      transition: var(--transition);
+    }
+    .mil-nav.scrolled { padding: 14px 0; }
+    .mil-nav-inner {
+      display: flex; align-items: center; justify-content: space-between; gap: 20px;
+    }
+    .mil-logo {
+      font-size: 32px; font-weight: 500; color: var(--muted);
+      white-space: nowrap; letter-spacing: -0.5px;
+    }
+    .mil-logo span { color: var(--green); }
+    .mil-nav-links {
+      display: flex; align-items: center; gap: 36px;
+    }
+    .mil-nav-links a {
+      font-size: 13px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 1.5px; color: var(--light-soft);
+      transition: color .25s;
+    }
+    .mil-nav-links a:hover { color: var(--green); }
+    .mil-nav-cta { display: flex; align-items: center; gap: 12px; }
+    .mil-burger {
+      display: none; flex-direction: column; gap: 5px; cursor: pointer;
+      padding: 4px;
+    }
+    .mil-burger span {
+      display: block; width: 24px; height: 2px;
+      background: var(--muted); border-radius: 2px; transition: var(--transition);
+    }
+    .mil-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mil-burger.open span:nth-child(2) { opacity: 0; }
+    .mil-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mil-mobile-menu {
+      display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+      background: rgba(11,11,11,.98); z-index: 99; flex-direction: column;
+      justify-content: center; align-items: center; gap: 36px;
+    }
+    .mil-mobile-menu.open { display: flex; }
+    .mil-mobile-menu a {
+      font-size: 28px; font-weight: 400; color: var(--muted); transition: color .25s;
+    }
+    .mil-mobile-menu a:hover { color: var(--green); }
+
+    @media(max-width:900px) {
+      .mil-nav-links { display: none; }
+      .mil-burger { display: flex; }
+      .mil-nav-cta .btn-outline { display: none; }
+    }
+
+    /* =========================================
+       BUTTONS
+    ========================================= */
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font); font-size: 12px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 2px;
+      border-radius: var(--radius-pill);
+      padding: 0 28px 0 44px; height: 62px;
+      cursor: pointer; border: none;
+      transition: var(--transition); white-space: nowrap;
+    }
+    .btn .btn-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; transition: transform .3s;
+    }
+    .btn:hover .btn-icon { transform: scale(1.15); }
+
+    .btn-primary {
+      background: var(--green); color: #000;
+    }
+    .btn-primary .btn-icon { background: #000; color: var(--green); }
+    .btn-primary:hover { filter: brightness(1.1); transform: scale(1.015); }
+
+    .btn-outline {
+      background: transparent; color: var(--muted);
+      border: 1.5px solid rgba(255,255,255,.2);
+      padding: 0 28px; gap: 0;
+    }
+    .btn-outline:hover {
+      border-color: var(--green); color: var(--green);
+      transform: scale(1.015);
+    }
+
+    .btn-sm {
+      height: 48px; padding: 0 22px 0 34px; font-size: 11px;
+    }
+    .btn-sm .btn-icon { width: 28px; height: 28px; }
+
+    /* =========================================
+       SECTION LABELS / SUPTITLES
+    ========================================= */
+    .mil-label-wrap {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--green-soft); border: 1px solid rgba(148,199,44,.25);
+      border-radius: var(--radius-pill); padding: 8px 18px;
+      margin-bottom: 28px;
+    }
+    .mil-label-wrap i { color: var(--green); font-size: 13px; }
+    .mil-label-wrap span {
+      font-size: 11px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--green);
+    }
+
+    .mil-suptitle-line {
+      position: relative;
+      display: block;
+      font-size: 13px; font-weight: 500; text-transform: uppercase;
+      letter-spacing: 2px; color: var(--light-soft);
+      margin-bottom: 24px;
+    }
+    .mil-suptitle-line::before {
+      content: '';
+      display: inline-block; width: 30px; height: 1.5px;
+      background: var(--green); margin-right: 12px;
+      vertical-align: middle;
+    }
+
+    /* =========================================
+       HERO SECTION
+    ========================================= */
+    .hero {
+      min-height: 120vh;
+      display: flex; align-items: center;
+      padding-top: 100px;
+      position: relative; overflow: hidden;
+      background: var(--dark);
+    }
+
+    /* Animated background blobs */
+    .hero-blobs {
+      position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+    }
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); opacity: 0.12;
+      animation: blobFloat 12s ease-in-out infinite;
+    }
+    .blob-1 {
+      width: 600px; height: 600px;
+      background: var(--green); top: -200px; right: -100px;
+      animation-delay: 0s;
+    }
+    .blob-2 {
+      width: 400px; height: 400px;
+      background: #2dcc70; bottom: -100px; left: -100px;
+      animation-delay: -5s;
+    }
+    .blob-3 {
+      width: 300px; height: 300px;
+      background: var(--green); top: 40%; left: 30%;
+      animation-delay: -8s; opacity: 0.06;
+    }
+    @keyframes blobFloat {
+      0%,100% { transform: translate(0,0) scale(1); }
+      33%      { transform: translate(30px,-20px) scale(1.05); }
+      66%      { transform: translate(-15px,25px) scale(.97); }
+    }
+
+    /* Grid overlay */
+    .hero-grid {
+      position: absolute; inset: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .hero-inner {
+      position: relative; z-index: 2;
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px; align-items: center; width: 100%;
+    }
+
+    .hero-content { max-width: 900px; }
+    .hero-content h1 { margin-bottom: 28px; }
+    .hero-content h1 em {
+      font-style: normal; color: var(--green);
+    }
+    .hero-sub {
+      font-size: 18px; color: var(--light-soft); line-height: 1.7;
+      margin-bottom: 40px; max-width: 520px;
+    }
+    .hero-cta {
+      display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 52px;
+    }
+    .hero-trust {
+      display: flex; align-items: center; gap: 20px;
+      flex-wrap: wrap;
+    }
+    .trust-badge {
+      display: flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,.05); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-pill); padding: 8px 16px;
+    }
+    .trust-badge i { color: var(--green); font-size: 14px; }
+    .trust-badge span { font-size: 12px; font-weight: 500; color: var(--light-soft); }
+
+    /* Hero Visual */
+    .hero-visual { position: relative; display:flex; justify-content:flex-end; }
+    .hero-card-stack { max-width:480px; width:100%;
+      position: relative; height: 480px;
+    }
+    .hc {
+      position: absolute;
+      background: var(--dark-card);
+      border: 1px solid var(--dark-border);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      box-shadow: 0 24px 64px rgba(0,0,0,.5);
+      transition: var(--transition);
+    }
+    .hc:hover { transform: translateY(-6px); }
+
+    /* Main dashboard card */
+    .hc-main {
+      width: 300px; top: 0; right: 0;
+      border-color: rgba(148,199,44,.3);
+    }
+    .hc-metric {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 20px;
+    }
+    .hc-metric-label { font-size: 12px; color: var(--light-soft); margin-bottom: 6px; }
+    .hc-metric-val { font-size: 30px; font-weight: 600; color: var(--green); }
+    .hc-metric-change {
+      font-size: 11px; font-weight: 600; color: var(--green);
+      background: var(--green-soft); border-radius: 20px;
+      padding: 4px 8px;
+    }
+    .hc-chart {
+      display: flex; align-items: flex-end; gap: 6px; height: 70px;
+    }
+    .hc-bar {
+      flex: 1; background: rgba(148,199,44,.2); border-radius: 4px;
+      transition: var(--transition);
+    }
+    .hc-bar.active { background: var(--green); }
+    .hc-bar:hover { background: var(--green); }
+
+    /* Leads card */
+    .hc-leads {
+      width: 210px; bottom: 60px; left: 0;
+      animation: floatCard 6s ease-in-out infinite;
+    }
+    @keyframes floatCard {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+    .hc-leads-title { font-size: 12px; color: var(--light-soft); margin-bottom: 14px; }
+    .hc-lead-item {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+    }
+    .hc-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 600; color: #fff; flex-shrink: 0;
+    }
+    .hc-lead-info p { font-size: 12px; color: var(--muted); line-height: 1.2; }
+    .hc-lead-info span { font-size: 10px; color: var(--light-soft); }
+
+    /* ROI card */
+    .hc-roi {
+      width: 180px; top: 220px; left: 60px;
+      animation: floatCard 7s ease-in-out infinite; animation-delay: -3s;
+    }
+    .hc-roi-icon {
+      width: 44px; height: 44px; background: var(--green-soft);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: 18px; margin-bottom: 12px;
+    }
+    .hc-roi p { font-size: 11px; color: var(--light-soft); }
+    .hc-roi strong { display: block; font-size: 24px; color: var(--green); font-weight: 600; }
+
+    @media(max-width:1024px) { .hero-inner { grid-template-columns: 1fr; gap: 60px; } .hero-visual { display: none; } }
+    @media(max-width:600px) { .hero-sub { font-size: 16px; } .hero-cta { flex-direction: column; } }
+
+    /* =========================================
+       NICHE AUTHORITY
+    ========================================= */
+    .niche { background: var(--dark-2); }
+    .niche-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 60px; align-items: center;
+    }
+    .niche-points { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 24px; margin-top: 40px; }
+    .niche-point {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm); padding: 24px;
+      transition: var(--transition);
+    }
+    .niche-point:hover { border-color: rgba(148,199,44,.4); transform: translateY(-4px); }
+    .niche-point-icon {
+      width: 46px; height: 46px; background: var(--green-soft);
+      border-radius: var(--radius-sm); display: flex; align-items: center;
+      justify-content: center; color: var(--green); font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .niche-point h5 { font-size: 15px; color: var(--muted); margin-bottom: 8px; }
+    .niche-point p  { font-size: 13px; color: var(--light-soft); line-height: 1.6; }
+
+    .niche-visual {
+      position: relative; background: var(--dark-card);
+      border: 1px solid var(--dark-border); border-radius: var(--radius-md);
+      padding: 40px; overflow: hidden;
+    }
+    .niche-visual::before {
+      content: ''; position: absolute; top: -50px; right: -50px;
+      width: 200px; height: 200px; background: var(--green-glow);
+      border-radius: 50%; filter: blur(60px);
+    }
+    .niche-stat {
+      display: flex; align-items: center; gap: 18px;
+      padding: 18px 0; border-bottom: 1px solid var(--dark-border);
+    }
+    .niche-stat:last-child { border-bottom: none; }
+    .niche-stat-num { font-size: 32px; font-weight: 600; color: var(--green); min-width: 90px; }
+    .niche-stat-text { font-size: 14px; color: var(--light-soft); }
+
+    @media(max-width:900px) { .niche-grid { grid-template-columns: 1fr; } .niche-points { grid-template-columns: 1.1fr 0.9fr; } }
+    @media(max-width:550px) { .niche-points { grid-template-columns: 1fr; } }
+
+    /* =========================================
+       SERVICES
+    ========================================= */
+    .services { background: var(--dark); }
+    .services-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+    }
+    .service-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-md); padding: 40px 32px;
+      transition: var(--transition); position: relative; overflow: hidden;
+    }
+    .service-card::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 3px; background: var(--green);
+      transition: width .5s cubic-bezier(0,0,.36,1);
+    }
+    .service-card:hover { border-color: rgba(148,199,44,.35); transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+    .service-card:hover::after { width: 100%; }
+
+    .sc-icon {
+      width: 60px; height: 60px; background: var(--green-soft);
+      border: 1px solid rgba(148,199,44,.3); border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: 22px; margin-bottom: 28px;
+    }
+    .service-card h4 { color: var(--muted); margin-bottom: 16px; font-size: 20px; }
+    .sc-list li {
+      display: flex; align-items: flex-start; gap: 10px;
+      font-size: 14px; color: var(--light-soft); line-height: 1.5;
+      padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .sc-list li:last-child { border-bottom: none; }
+    .sc-list li i { color: var(--green); font-size: 12px; margin-top: 4px; flex-shrink: 0; }
+    .sc-cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--green); font-size: 12px; font-weight: 500;
+      text-transform: uppercase; letter-spacing: 1.5px;
+      margin-top: 28px; transition: gap .25s;
+    }
+    .sc-cta:hover { gap: 14px; }
+    .sc-cta i { font-size: 10px; }
+
+    @media(max-width:900px) { .services-grid { grid-template-columns: 1fr; } }
+
+    /* =========================================
+       CASE STUDIES
+    ========================================= */
+    .cases { background: var(--dark-2); }
+    .cases-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+    }
+    .case-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-md); overflow: hidden;
+      transition: var(--transition);
+    }
+    .case-card:hover { transform: translateY(-8px); border-color: rgba(148,199,44,.3); box-shadow: 0 20px 50px rgba(0,0,0,.5); }
+    .case-img {
+      height: 200px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .case-img-bg {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .case-img-pattern {
+      position: absolute; inset: 0; opacity: 0.08;
+      background-image: radial-gradient(circle at 2px 2px, rgba(148,199,44,.6) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .case-img-icon { font-size: 64px; position: relative; z-index: 1; opacity: 0.6; }
+    .case-tag {
+      position: absolute; top: 16px; left: 16px;
+      background: var(--green); color: #000;
+      font-size: 10px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1.5px; padding: 5px 12px; border-radius: 20px;
+    }
+    .case-body { padding: 28px; }
+    .case-body h5 { color: var(--muted); margin-bottom: 16px; font-size: 18px; }
+    .case-row {
+      display: flex; gap: 8px; margin-bottom: 12px; align-items: flex-start;
+    }
+    .case-row-label {
+      font-size: 11px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--green); min-width: 72px;
+      padding-top: 2px;
+    }
+    .case-row-text { font-size: 13px; color: var(--light-soft); line-height: 1.5; }
+    .case-results {
+      display: flex; gap: 12px; margin-top: 20px; flex-wrap: wrap;
+    }
+    .case-result-badge {
+      background: var(--green-soft); border: 1px solid rgba(148,199,44,.3);
+      border-radius: 20px; padding: 6px 14px;
+      font-size: 12px; font-weight: 600; color: var(--green);
+    }
+
+    @media(max-width:900px) { .cases-grid { grid-template-columns: 1fr; } }
+    @media(max-width:600px) { .cases-grid { grid-template-columns: 1fr; } }
+
+    /* =========================================
+       COMPLIANCE & TRUST
+    ========================================= */
+    .compliance {
+      background: var(--dark);
+      position: relative; overflow: hidden;
+    }
+    .compliance::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 1px; background: linear-gradient(90deg,transparent,var(--green),transparent);
+    }
+    .compliance::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 1px; background: linear-gradient(90deg,transparent,var(--green),transparent);
+    }
+    .compliance-inner {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 80px; align-items: center;
+    }
+    .compliance-list { margin-top: 36px; display: grid; gap: 16px; }
+    .comp-item {
+      display: flex; align-items: flex-start; gap: 16px;
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-sm); padding: 20px;
+      transition: var(--transition);
+    }
+    .comp-item:hover { border-color: rgba(148,199,44,.3); }
+    .comp-item-icon {
+      width: 40px; height: 40px; background: var(--green-soft);
+      border-radius: 10px; display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: 16px; flex-shrink: 0;
+    }
+    .comp-item-text h6 { color: var(--muted); font-size: 15px; margin-bottom: 4px; }
+    .comp-item-text p { font-size: 13px; color: var(--light-soft); }
+
+    .compliance-highlight {
+      background: var(--dark-card); border: 1px solid rgba(148,199,44,.25);
+      border-radius: var(--radius-md); padding: 48px;
+      position: relative; overflow: hidden;
+    }
+    .compliance-highlight::before {
+      content: ''; position: absolute; top: -60px; right: -60px;
+      width: 250px; height: 250px; background: var(--green-glow);
+      border-radius: 50%; filter: blur(80px);
+    }
+    .ch-shield {
+      width: 80px; height: 80px; background: var(--green-soft);
+      border: 2px solid rgba(148,199,44,.4); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--green); font-size: 32px; margin-bottom: 28px;
+    }
+    .compliance-highlight h3 { color: var(--muted); margin-bottom: 18px; }
+    .compliance-highlight p { color: var(--light-soft); font-size: 15px; line-height: 1.7; margin-bottom: 28px; }
+    .ch-platforms {
+      display: flex; flex-wrap: wrap; gap: 10px;
+    }
+    .ch-platform {
+      background: rgba(255,255,255,.05); border: 1px solid var(--dark-border);
+      border-radius: 20px; padding: 6px 14px;
+      font-size: 12px; color: var(--light-soft);
+    }
+
+    @media(max-width:900px) { .compliance-inner { grid-template-columns: 1fr; gap: 50px; } }
+
+    /* =========================================
+       PROCESS
+    ========================================= */
+    .process { background: var(--dark-2); }
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4,1fr); gap: 0;
+      margin-top: 60px; position: relative;
+    }
+    .process-steps::before {
+      content: ''; position: absolute;
+      top: 36px; left: calc(12.5% + 20px); right: calc(12.5% + 20px);
+      height: 1px; background: linear-gradient(90deg, var(--green), rgba(148,199,44,.2));
+      pointer-events: none;
+    }
+    .process-step {
+      text-align: center; padding: 0 20px;
+      position: relative; cursor: default;
+    }
+    .ps-num {
+      width: 72px; height: 72px; border-radius: 50%;
+      border: 2px solid var(--green);
+      background: var(--dark-2);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; font-weight: 600; color: var(--green);
+      margin: 0 auto 28px; position: relative; z-index: 1;
+      transition: var(--transition);
+    }
+    .ps-num:hover, .process-step:hover .ps-num {
+      background: var(--green); color: #000;
+      transform: scale(1.1);
+      box-shadow: 0 0 30px rgba(148,199,44,.4);
+    }
+    .process-step h5 { color: var(--muted); margin-bottom: 10px; font-size: 16px; }
+    .process-step p { font-size: 13px; color: var(--light-soft); line-height: 1.6; }
+
+    @media(max-width:768px) {
+      .process-steps { grid-template-columns: 1.1fr 0.9fr; gap: 40px; }
+      .process-steps::before { display: none; }
+    }
+    @media(max-width:480px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+
+    /* =========================================
+       TESTIMONIALS
+    ========================================= */
+    .testimonials { background: var(--dark); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 24px;
+    }
+    .testi-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-md); padding: 36px;
+      transition: var(--transition); position: relative;
+    }
+    .testi-card::before {
+      content: '"'; position: absolute; top: 20px; right: 28px;
+      font-size: 80px; line-height: 1; color: var(--green); opacity: 0.15;
+      font-family: Georgia, serif;
+    }
+    .testi-card:hover { border-color: rgba(148,199,44,.3); transform: translateY(-5px); }
+    .testi-stars { display: flex; gap: 4px; margin-bottom: 20px; }
+    .testi-stars i { color: var(--green); font-size: 13px; }
+    .testi-text {
+      font-size: 15px; color: var(--light-soft); line-height: 1.75;
+      margin-bottom: 28px;
+    }
+    .testi-person { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar {
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; color: #fff; flex-shrink: 0;
+    }
+    .testi-name { font-size: 15px; font-weight: 500; color: var(--muted); }
+    .testi-role { font-size: 12px; color: var(--light-soft); }
+
+    @media(max-width:900px) { .testi-grid { grid-template-columns: 1fr; } }
+
+    /* =========================================
+       WHO WE WORK WITH
+    ========================================= */
+    .clients { background: var(--dark-2); }
+    .clients-grid {
+      display: grid; grid-template-columns: repeat(5,1fr); gap: 20px;
+      margin-top: 50px;
+    }
+    .client-tile {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: var(--radius-md); padding: 36px 20px;
+      text-align: center; transition: var(--transition); cursor: default;
+    }
+    .client-tile:hover { border-color: rgba(148,199,44,.4); transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,.4); }
+    .client-tile:hover .ct-icon { background: var(--green); color: #000; }
+    .ct-icon {
+      width: 60px; height: 60px; background: var(--green-soft);
+      border-radius: 50%; display: flex; align-items: center;
+      justify-content: center; font-size: 22px; color: var(--green);
+      margin: 0 auto 16px; transition: var(--transition);
+    }
+    .client-tile p { font-size: 14px; font-weight: 500; color: var(--muted); }
+
+    @media(max-width:900px) { .clients-grid { grid-template-columns: repeat(3,1fr); } }
+    @media(max-width:550px) { .clients-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* =========================================
+       FINAL CTA
+    ========================================= */
+    .final-cta {
+      background: var(--dark); position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .final-cta-blob {
+      position: absolute; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(148,199,44,.12) 0%, transparent 70%);
+      top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none; border-radius: 50%;
+    }
+    .final-cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+    .urgency-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,80,80,.1); border: 1px solid rgba(255,80,80,.3);
+      border-radius: var(--radius-pill); padding: 7px 18px;
+      font-size: 12px; font-weight: 600; color: #ff6060;
+      margin-bottom: 28px; text-transform: uppercase; letter-spacing: 1.5px;
+    }
+    .urgency-badge::before { content: ''; width: 8px; height: 8px; background: #ff6060; border-radius: 50%; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.4)} }
+    .final-cta h2 { margin-bottom: 20px; }
+    .final-cta p { color: var(--light-soft); font-size: 17px; margin-bottom: 44px; }
+    .final-cta-btns { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+
+    /* =========================================
+       FOOTER
+    ========================================= */
+    footer {
+      background: var(--dark-2);
+      border-top: 1px solid var(--dark-border);
+      padding: 80px 0 40px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 50px; margin-bottom: 60px;
+    }
+    .footer-brand p {
+      font-size: 14px; color: var(--light-soft);
+      line-height: 1.7; margin: 20px 0 30px; max-width: 300px;
+    }
+    .footer-social { display: flex; gap: 12px; }
+    .footer-social a {
+      width: 38px; height: 38px; border-radius: 50%;
+      background: rgba(255,255,255,.06); border: 1px solid var(--dark-border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--light-soft); font-size: 14px; transition: var(--transition);
+    }
+    .footer-social a:hover { background: var(--green); border-color: var(--green); color: #000; }
+    .footer-col h6 { color: var(--muted); font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 24px; }
+    .footer-col ul li { margin-bottom: 12px; }
+    .footer-col ul li a { font-size: 14px; color: var(--light-soft); transition: color .25s; }
+    .footer-col ul li a:hover { color: var(--green); }
+    .footer-contact-item {
+      display: flex; align-items: flex-start; gap: 10px; margin-bottom: 14px;
+    }
+    .footer-contact-item i { color: var(--green); font-size: 13px; margin-top: 3px; }
+    .footer-contact-item span { font-size: 13px; color: var(--light-soft); line-height: 1.5; }
+    .footer-bottom {
+      border-top: 1px solid var(--dark-border);
+      padding-top: 30px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-bottom p { font-size: 13px; color: var(--light-soft); }
+    .footer-bottom-links { display: flex; gap: 24px; }
+    .footer-bottom-links a { font-size: 13px; color: var(--light-soft); transition: color .25s; }
+    .footer-bottom-links a:hover { color: var(--green); }
+
+    @media(max-width:900px) { .footer-top { grid-template-columns: 1.1fr 0.9fr; } }
+    @media(max-width:600px) { .footer-top { grid-template-columns: 1fr; } .footer-bottom { flex-direction: column; text-align: center; } }
+
+    /* =========================================
+       SECTION HEADER (reusable)
+    ========================================= */
+    .section-header { margin-bottom: 60px; }
+    .section-header.center { text-align: center; }
+    .section-header h2 { margin-bottom: 16px; }
+    .section-header p { font-size: 17px; color: var(--light-soft); max-width: 600px; }
+    .section-header.center p { margin: 0 auto; }
+
+    /* =========================================
+       SUBTLE ENTRANCE ANIMATIONS
+    ========================================= */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-up:nth-child(1) { transition-delay: 0s; }
+    .fade-up:nth-child(2) { transition-delay: .1s; }
+    .fade-up:nth-child(3) { transition-delay: .2s; }
+    .fade-up:nth-child(4) { transition-delay: .3s; }
+    .fade-up:nth-child(5) { transition-delay: .4s; }
+
+    /* =========================================
+       DIVIDER
+    ========================================= */
+    .mil-divider-green {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148,199,44,.3), transparent);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Progress Bar -->
+  <div class="mil-progress-track"><div class="mil-progress" id="progressBar"></div></div>
+
+  <!-- ============ NAVIGATION ============ -->
+  <nav class="mil-nav" id="mainNav">
+    <div class="container">
+      <div class="mil-nav-inner">
+        <a href="/" class="mil-logo">Arzooz<span>.</span></a>
+
+        <div class="mil-nav-links">
+          <a href="/">Home</a>
+          <a href="/services">Services</a>
+          <a href="/portfolio">Portfolio</a>
+          <a href="/blog">Blog</a>
+          <a href="/contact">Contact</a>
+        </div>
+
+        <div class="mil-nav-cta">
+          <a href="/contact" class="btn btn-outline btn-sm">Get Free Audit</a>
+          <a href="/contact" class="btn btn-primary btn-sm">
+            <span>Book a Call</span>
+            <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <div class="mil-burger" id="burger">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mil-mobile-menu" id="mobileMenu">
+    <a href="/" onclick="closeMobile()">Home</a>
+    <a href="/services" onclick="closeMobile()">Services</a>
+    <a href="/portfolio" onclick="closeMobile()">Portfolio</a>
+    <a href="/blog" onclick="closeMobile()">Blog</a>
+    <a href="/contact" onclick="closeMobile()">Contact</a>
+    <a href="/contact" class="btn btn-primary" onclick="closeMobile()">
+      <span>Book a Call</span>
+      <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+    </a>
+  </div>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <div class="hero-blobs">
+      <div class="blob blob-1"></div>
+      <div class="blob blob-2"></div>
+      <div class="blob blob-3"></div>
+    </div>
+    <div class="hero-grid"></div>
+
+    <div class="container">
+      <div class="hero-inner">
+
+        <!-- Left Content -->
+        <div class="hero-content">
+          <div class="mil-label-wrap">
+            <i class="fas fa-heartbeat"></i>
+            <span>Health &amp; Wellness Marketing Specialists</span>
+          </div>
+
+          <h1 class="hero-title">
+We Help <span class="mil-accent">Health & Wellness</span>
+Brands <span class="mil-thin">Scale</span> <span class="mil-accent">Profitably</span>
+</h1>
+
+          <p class="hero-sub">
+            From clinics and fitness brands to skincare, supplements, and mental health services — we build compliant, high-converting marketing systems that grow your brand safely.
+          </p>
+
+          <div class="hero-cta">
+            <a href="/contact" class="btn btn-primary">
+              <span>Book a Free Strategy Call</span>
+              <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+            </a>
+            <a href="/contact" class="btn btn-outline">Get Free Audit</a>
+          </div>
+
+          <div class="hero-trust">
+            <div class="trust-badge">
+              <i class="fas fa-shield-alt"></i>
+              <span>Compliance-First</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fas fa-chart-line"></i>
+              <span>200+ Brands Scaled</span>
+            </div>
+            <div class="trust-badge">
+              <i class="fas fa-star"></i>
+              <span>98% Retention Rate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Visual -->
+        <div class="hero-visual">
+          <div class="hero-card-stack">
+
+            <!-- Dashboard Card -->
+            <div class="hc hc-main">
+              <div class="hc-metric">
+                <div>
+                  <div class="hc-metric-label">Monthly Leads</div>
+                  <div class="hc-metric-val">1,842</div>
+                </div>
+                <div class="hc-metric-change">+67%</div>
+              </div>
+              <div class="hc-chart">
+                <div class="hc-bar" style="height:30%"></div>
+                <div class="hc-bar" style="height:55%"></div>
+                <div class="hc-bar" style="height:40%"></div>
+                <div class="hc-bar" style="height:70%"></div>
+                <div class="hc-bar" style="height:60%"></div>
+                <div class="hc-bar active" style="height:85%"></div>
+                <div class="hc-bar" style="height:90%"></div>
+              </div>
+            </div>
+
+            <!-- ROI Card -->
+            <div class="hc hc-roi">
+              <div class="hc-roi-icon"><i class="fas fa-trophy"></i></div>
+              <p>Average Client ROI</p>
+              <strong>4.2x</strong>
+            </div>
+
+            <!-- Leads Feed -->
+            <div class="hc hc-leads">
+              <div class="hc-leads-title">New Leads Today</div>
+              <div class="hc-lead-item">
+                <div class="hc-avatar" style="background:#94C72C;">S</div>
+                <div class="hc-lead-info">
+                  <p>Skin Clinic — Dubai</p>
+                  <span>2 mins ago</span>
+                </div>
+              </div>
+              <div class="hc-lead-item">
+                <div class="hc-avatar" style="background:#2dcc70;">F</div>
+                <div class="hc-lead-info">
+                  <p>Fitness Brand — LA</p>
+                  <span>14 mins ago</span>
+                </div>
+              </div>
+              <div class="hc-lead-item">
+                <div class="hc-avatar" style="background:#27ae60;">M</div>
+                <div class="hc-lead-info">
+                  <p>Mental Health App</p>
+                  <span>31 mins ago</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="mil-divider-green"></div>
+
+  <!-- ============ NICHE AUTHORITY ============ -->
+  <section class="niche mil-p-120">
+    <div class="container">
+      <div class="niche-grid">
+
+        <div>
+          <div class="mil-suptitle-line">Why Expertise Matters</div>
+          <h2>Marketing Health Brands <span class="mil-thin">Requires</span> True <em class="mil-accent">Expertise</em></h2>
+          <p style="color:var(--light-soft);font-size:16px;line-height:1.75;margin-top:20px;">
+            Health and wellness is one of the most regulated niches in digital advertising. Generic agencies get ads rejected, accounts banned, and brands penalised. We understand the rules — and how to win within them.
+          </p>
+          <div class="niche-points">
+            <div class="niche-point fade-up">
+              <div class="niche-point-icon"><i class="fas fa-ban"></i></div>
+              <h5>Strict Ad Policies</h5>
+              <p>Meta and Google flag health claims instantly. Our creatives are crafted to comply from day one.</p>
+            </div>
+            <div class="niche-point fade-up">
+              <div class="niche-point-icon"><i class="fas fa-user-shield"></i></div>
+              <h5>Trust Deficit</h5>
+              <p>Health consumers are sceptical. Our messaging frameworks build credibility that converts.</p>
+            </div>
+            <div class="niche-point fade-up">
+              <div class="niche-point-icon"><i class="fas fa-file-medical-alt"></i></div>
+              <h5>Compliance-First</h5>
+              <p>No misleading claims, no shortcuts. Every campaign is built on long-term brand safety.</p>
+            </div>
+            <div class="niche-point fade-up">
+              <div class="niche-point-icon"><i class="fas fa-funnel-dollar"></i></div>
+              <h5>Funnel Complexity</h5>
+              <p>Health funnels require nurturing. We build multi-touch journeys that guide patients to book.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="niche-visual">
+          <div class="mil-suptitle-line">Proven Results</div>
+          <div class="niche-stat fade-up">
+            <div class="niche-stat-num">200+</div>
+            <div class="niche-stat-text">Health &amp; Wellness brands scaled across 3 continents</div>
+          </div>
+          <div class="niche-stat fade-up">
+            <div class="niche-stat-num">98%</div>
+            <div class="niche-stat-text">Client retention rate — because our results speak for themselves</div>
+          </div>
+          <div class="niche-stat fade-up">
+            <div class="niche-stat-num">4x</div>
+            <div class="niche-stat-text">Average return on investment across all active client campaigns</div>
+          </div>
+          <div class="niche-stat fade-up">
+            <div class="niche-stat-num">0</div>
+            <div class="niche-stat-text">Ad account bans across all health clients in the last 18 months</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="mil-divider-green"></div>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="services mil-p-120">
+    <div class="container">
+      <div class="section-header center">
+        <div class="mil-suptitle-line" style="display:inline-block;">What We Do</div>
+        <h2>Tailored Services <span class="mil-thin">for</span> <em class="mil-accent">Health Brands</em></h2>
+        <p>Every service is engineered specifically for the unique challenges of the health &amp; wellness industry.</p>
+      </div>
+
+      <div class="services-grid">
+
+        <div class="service-card fade-up">
+          <div class="sc-icon"><i class="fas fa-bullhorn"></i></div>
+          <h4>Digital Marketing <span class="mil-thin">&amp; Paid Ads</span></h4>
+          <ul class="sc-list">
+            <li><i class="fas fa-check"></i> Meta &amp; Google Ads (Health-compliant)</li>
+            <li><i class="fas fa-check"></i> Lead generation funnels for clinics</li>
+            <li><i class="fas fa-check"></i> LinkedIn ads for B2B health brands</li>
+            <li><i class="fas fa-check"></i> Retargeting &amp; lookalike audiences</li>
+            <li><i class="fas fa-check"></i> Conversion rate optimisation</li>
+          </ul>
+          <a href="/contact" class="sc-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="sc-icon"><i class="fas fa-laptop-code"></i></div>
+          <h4>Web Design <span class="mil-thin">&amp; Development</span></h4>
+          <ul class="sc-list">
+            <li><i class="fas fa-check"></i> High-converting clinic landing pages</li>
+            <li><i class="fas fa-check"></i> Trust-building UI/UX for health</li>
+            <li><i class="fas fa-check"></i> Mobile-first, speed-optimised builds</li>
+            <li><i class="fas fa-check"></i> Online booking &amp; appointment flows</li>
+            <li><i class="fas fa-check"></i> HIPAA-aware design principles</li>
+          </ul>
+          <a href="/contact" class="sc-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card fade-up">
+          <div class="sc-icon"><i class="fas fa-robot"></i></div>
+          <h4>AI Automation <span class="mil-thin">&amp; CRM</span></h4>
+          <ul class="sc-list">
+            <li><i class="fas fa-check"></i> Appointment booking bots (N8N/Make)</li>
+            <li><i class="fas fa-check"></i> Lead nurturing &amp; follow-up sequences</li>
+            <li><i class="fas fa-check"></i> CRM automation &amp; pipeline setup</li>
+            <li><i class="fas fa-check"></i> Review collection automation</li>
+            <li><i class="fas fa-check"></i> AI-powered patient re-engagement</li>
+          </ul>
+          <a href="/contact" class="sc-cta">Get Started <i class="fas fa-arrow-right"></i></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="mil-divider-green"></div>
+
+ <!-- ============================================================
+     CAMPAIGN RESULTS — Simple Slideshow Section
+     ============================================================ -->
+<style>
+.cr-section {
+  background: #111111;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cr-section::before,
+.cr-section::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, #94C72C, transparent);
+}
+.cr-section::before { top: 0; }
+.cr-section::after  { bottom: 0; }
+
+/* Header */
+.cr-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.cr-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(148,199,44,.08);
+  border: 1px solid rgba(148,199,44,.25);
+  border-radius: 50px; padding: 8px 20px;
+  margin-bottom: 20px;
+}
+.cr-label i    { color: #94C72C; font-size: 12px; }
+.cr-label span { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #94C72C; }
+.cr-header h2  {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(26px, 4vw, 52px);
+  font-weight: 500;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 14px;
+}
+.cr-header h2 span { font-weight: 100; }
+.cr-header h2 em   { font-style: normal; color: #94C72C; }
+.cr-header p {
+  font-size: 16px; color: rgba(255,255,255,.38);
+  max-width: 480px; margin: 0 auto; line-height: 1.7;
+}
+
+/* Slideshow Box */
+.cr-box {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #151515;
+  border: 1px solid rgba(148,199,44,.2);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fake browser bar */
+.cr-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px;
+  background: #1a1a1a;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.cr-dots { display: flex; gap: 6px; }
+.cr-dot  { width: 11px; height: 11px; border-radius: 50%; }
+.cr-dot:nth-child(1) { background: #ff5f57; }
+.cr-dot:nth-child(2) { background: #febc2e; }
+.cr-dot:nth-child(3) { background: #28c840; }
+.cr-url {
+  flex: 1; height: 24px; background: rgba(255,255,255,.06);
+  border-radius: 6px; display: flex; align-items: center;
+  padding: 0 12px; font-size: 11px; color: rgba(255,255,255,.22);
+}
+
+/* Slides */
+.cr-slides { position: relative; height: 460px; overflow: hidden; }
+
+.cr-slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+.cr-slide.active { opacity: 1; pointer-events: all; }
+
+.cr-slide img {
+  width: 100%; height: 360px;
+  object-fit: cover; object-position: top;
+  display: block;
+}
+
+/* Placeholder if no image */
+.cr-slide .cr-ph {
+  width: 100%; height: 360px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  background: #0d0d0d;
+}
+.cr-slide .cr-ph i    { font-size: 40px; color: rgba(148,199,44,.2); }
+.cr-slide .cr-ph span { font-size: 12px; color: rgba(255,255,255,.18); text-transform: uppercase; letter-spacing: 1px; }
+
+/* Slide caption */
+.cr-caption {
+  padding: 18px 24px;
+  border-top: 1px solid rgba(255,255,255,.05);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.cr-caption-text h5 {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px; font-weight: 500;
+  color: rgba(255,255,255,.8); margin-bottom: 4px;
+}
+.cr-caption-text p {
+  font-size: 12px; color: rgba(255,255,255,.35); line-height: 1.5;
+}
+.cr-platform-tag {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px; padding: 6px 14px; white-space: nowrap;
+  font-size: 11px; color: rgba(255,255,255,.45); flex-shrink: 0;
+}
+
+/* Navigation dots */
+.cr-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 20px 0 0;
+}
+.cr-nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  cursor: pointer; transition: background .3s, transform .3s;
+  border: none; padding: 0;
+}
+.cr-nav-dot.active {
+  background: #94C72C; transform: scale(1.25);
+}
+
+/* Arrows */
+.cr-arrow {
+  position: absolute; top: calc(360px / 2); transform: translateY(-50%);
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.7); font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 5; transition: background .25s, border-color .25s;
+  backdrop-filter: blur(6px);
+}
+.cr-arrow:hover { background: #94C72C; border-color: #94C72C; color: #000; }
+.cr-arrow.prev { left: 14px; }
+.cr-arrow.next { right: 14px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cr-section { padding: 70px 0; }
+  .cr-slides   { height: 380px; }
+  .cr-slide img, .cr-slide .cr-ph { height: 280px; }
+  .cr-arrow { top: calc(280px / 2); }
+  .cr-caption { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+@media (max-width: 480px) {
+  .cr-slides   { height: 320px; }
+  .cr-slide img, .cr-slide .cr-ph { height: 230px; }
+  .cr-arrow { top: calc(230px / 2); }
+  .cr-caption-text h5 { font-size: 14px; }
+}
+</style>
+
+
+<!-- HTML -->
+<section class="cr-section" id="results">
+  <div class="container">
+
+    <div class="cr-header">
+      <div class="cr-label">
+        <i class="fas fa-chart-bar"></i>
+        <span>Campaign Results</span>
+      </div>
+      <h2>Real Campaigns, <em>Real Numbers</em><br><span>No Guesswork — Just Growth</span></h2>
+      <p>A snapshot of results we've delivered for health &amp; wellness brands across paid channels.</p>
+    </div>
+
+    <div class="cr-box">
+
+      <!-- Browser Bar -->
+      <div class="cr-bar">
+        <div class="cr-dots">
+          <div class="cr-dot"></div>
+          <div class="cr-dot"></div>
+          <div class="cr-dot"></div>
+        </div>
+        <div class="cr-url" id="crUrl">ads.facebook.com — Campaign Results</div>
+      </div>
+
+      <!-- Slides -->
+      <div class="cr-slides" id="crSlides">
+
+        <div class="cr-arrow prev" id="crPrev"><i class="fas fa-chevron-left"></i></div>
+        <div class="cr-arrow next" id="crNext"><i class="fas fa-chevron-right"></i></div>
+
+        <!--
+          ★ SLIDE 1
+          src mai apna screenshot path daalein: src="img/results/campaign-1.jpg"
+        -->
+        <div class="cr-slide active">
+          <img
+            src="img/results/campaign-1.jpg"
+            alt="Meta Ads Campaign Results"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="cr-ph" style="display:none;">
+            <i class="fas fa-image"></i>
+            <span>Add screenshot here — src="img/results/campaign-1.jpg"</span>
+          </div>
+          <div class="cr-caption">
+            <div class="cr-caption-text">
+              <h5>Dubai Aesthetic Clinic — Meta Ads</h5>
+              <p>+180% leads, 3.8x ROAS, cost per lead reduced by 60% in 8 weeks.</p>
+            </div>
+            <div class="cr-platform-tag"><i class="fab fa-facebook" style="color:#1877f2;"></i> Meta Ads</div>
+          </div>
+        </div>
+
+        <!--
+          ★ SLIDE 2
+          src mai apna screenshot path daalein: src="img/results/campaign-2.jpg"
+        -->
+        <div class="cr-slide">
+          <img
+            src="img/results/campaign-2.jpg"
+            alt="Google Ads Campaign Results"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="cr-ph" style="display:none;">
+            <i class="fas fa-image"></i>
+            <span>Add screenshot here — src="img/results/campaign-2.jpg"</span>
+          </div>
+          <div class="cr-caption">
+            <div class="cr-caption-text">
+              <h5>FitLife App, Los Angeles — Google Ads</h5>
+              <p>+2,400 new users/month, 4.5x ROI, 40% improvement in user retention.</p>
+            </div>
+            <div class="cr-platform-tag"><i class="fab fa-google" style="color:#fbbc04;"></i> Google Ads</div>
+          </div>
+        </div>
+
+        <!--
+          ★ SLIDE 3
+          src mai apna screenshot path daalein: src="img/results/campaign-3.jpg"
+        -->
+        <div class="cr-slide">
+          <img
+            src="img/results/campaign-3.jpg"
+            alt="LinkedIn Ads Campaign Results"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="cr-ph" style="display:none;">
+            <i class="fas fa-image"></i>
+            <span>Add screenshot here — src="img/results/campaign-3.jpg"</span>
+          </div>
+          <div class="cr-caption">
+            <div class="cr-caption-text">
+              <h5>HealthPro Supplements, Pakistan — LinkedIn Ads</h5>
+              <p>+220% revenue growth, 5.1x ROAS, bounce rate down 45% in 10 weeks.</p>
+            </div>
+            <div class="cr-platform-tag"><i class="fab fa-linkedin" style="color:#0a66c2;"></i> LinkedIn Ads</div>
+          </div>
+        </div>
+
+        <!--
+          ★ AUR SLIDES BADHANE KE LIYE COPY KAREIN YEH BLOCK:
+
+        <div class="cr-slide">
+          <img src="img/results/campaign-4.jpg" alt="..."
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="cr-ph" style="display:none;">
+            <i class="fas fa-image"></i><span>Add screenshot here</span>
+          </div>
+          <div class="cr-caption">
+            <div class="cr-caption-text">
+              <h5>Campaign Title</h5>
+              <p>Short description of the result.</p>
+            </div>
+            <div class="cr-platform-tag"><i class="fab fa-facebook" style="color:#1877f2;"></i> Meta Ads</div>
+          </div>
+        </div>
+        -->
+
+      </div><!-- /.cr-slides -->
+
+      <!-- Dots -->
+      <div class="cr-nav" id="crNav"></div>
+
+    </div><!-- /.cr-box -->
+  </div>
+</section>
+
+
+<!-- JavaScript -->
+<script>
+(function () {
+  const slides   = document.querySelectorAll('.cr-slide');
+  const nav      = document.getElementById('crNav');
+  const prevBtn  = document.getElementById('crPrev');
+  const nextBtn  = document.getElementById('crNext');
+  const urlBar   = document.getElementById('crUrl');
+  let current    = 0;
+  let autoTimer;
+
+  const urls = [
+    'ads.facebook.com — Campaign Results',
+    'ads.google.com — Campaign Dashboard',
+    'linkedin.com/campaign-manager — Results',
+  ];
+
+  /* Build dots */
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'cr-nav-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    nav.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    nav.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    nav.children[current].classList.add('active');
+    if (urlBar && urls[current]) urlBar.textContent = urls[current];
+    resetAuto();
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  /* Swipe support for mobile */
+  let touchX = 0;
+  const box = document.querySelector('.cr-slides');
+  box.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend',   e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  });
+
+  resetAuto();
+})();
+</script>
+
+
+  <!-- ============ COMPLIANCE & TRUST ============ -->
+  <section class="compliance mil-p-120">
+    <div class="container">
+      <div class="compliance-inner">
+
+        <div>
+          <div class="mil-suptitle-line">Platform Safety</div>
+          <h2>We Understand Health <em class="mil-accent">Advertising</em> <span class="mil-thin">Compliance</span></h2>
+          <p style="color:var(--light-soft);margin-top:18px;font-size:15px;line-height:1.7;">
+            When your brand's reputation is on the line, you need a partner who plays by the rules — and still delivers exceptional results.
+          </p>
+
+          <div class="compliance-list">
+            <div class="comp-item fade-up">
+              <div class="comp-item-icon"><i class="fas fa-check-circle"></i></div>
+              <div class="comp-item-text">
+                <h6>Platform-Safe Ad Strategies</h6>
+                <p>Every ad is reviewed for Meta, Google, and TikTok health advertising policies before launch.</p>
+              </div>
+            </div>
+            <div class="comp-item fade-up">
+              <div class="comp-item-icon"><i class="fas fa-file-contract"></i></div>
+              <div class="comp-item-text">
+                <h6>No Misleading Claims</h6>
+                <p>We never use exaggerated results or unsubstantiated health claims that can get accounts restricted.</p>
+              </div>
+            </div>
+            <div class="comp-item fade-up">
+              <div class="comp-item-icon"><i class="fas fa-building"></i></div>
+              <div class="comp-item-text">
+                <h6>Long-Term Brand Trust Focus</h6>
+                <p>Our campaigns build sustainable trust with your audience — not just short-term spikes.</p>
+              </div>
+            </div>
+            <div class="comp-item fade-up">
+              <div class="comp-item-icon"><i class="fas fa-user-md"></i></div>
+              <div class="comp-item-text">
+                <h6>Health Niche Expertise</h6>
+                <p>We've worked with clinics, pharmacies, therapists, and supplement brands — we know the territory.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="compliance-highlight">
+          <div class="ch-shield"><i class="fas fa-shield-alt"></i></div>
+          <h3>Compliant by Design. <span class="mil-thin">Profitable by Result.</span></h3>
+          <p>
+            We've helped health brands recover banned accounts, rewrite non-compliant campaigns, and rebuild their paid advertising from the ground up — all while dramatically improving conversion rates.
+          </p>
+          <div class="mil-suptitle-line">Platforms We Manage</div>
+          <div class="ch-platforms">
+            <span class="ch-platform"><i class="fab fa-facebook" style="color:var(--green);margin-right:6px;"></i>Meta Ads</span>
+            <span class="ch-platform"><i class="fab fa-google" style="color:var(--green);margin-right:6px;"></i>Google Ads</span>
+            <span class="ch-platform"><i class="fab fa-tiktok" style="color:var(--green);margin-right:6px;"></i>TikTok Ads</span>
+            <span class="ch-platform"><i class="fab fa-linkedin" style="color:var(--green);margin-right:6px;"></i>LinkedIn Ads</span>
+            <span class="ch-platform"><i class="fab fa-youtube" style="color:var(--green);margin-right:6px;"></i>YouTube Ads</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="mil-divider-green"></div>
+
+  <!-- ============ PROCESS ============ -->
+  <section class="process mil-p-120">
+    <div class="container">
+      <div class="section-header center">
+        <div class="mil-suptitle-line" style="display:inline-block;">How It Works</div>
+        <h2>Our <em class="mil-accent">4-Step</em> <span class="mil-thin">Growth Process</span></h2>
+        <p>A proven framework we run for every health brand — no guesswork, no shortcuts.</p>
+      </div>
+
+      <div class="process-steps">
+        <div class="process-step fade-up">
+          <div class="ps-num">01</div>
+          <h5>Audit &amp; Strategy</h5>
+          <p>Deep-dive into your current marketing, ad accounts, funnel, and competitors. We map out the fastest path to growth.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="ps-num">02</div>
+          <h5>Funnel &amp; Creative</h5>
+          <p>Build compliance-ready ad creatives, landing pages, and lead nurture sequences tailored for health consumers.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="ps-num">03</div>
+          <h5>Launch &amp; Optimise</h5>
+          <p>Go live across paid channels with rigorous A/B testing. Weekly reporting keeps you informed every step of the way.</p>
+        </div>
+        <div class="process-step fade-up">
+          <div class="ps-num">04</div>
+          <h5>Scale</h5>
+          <p>Once we find what works, we scale aggressively and efficiently — maximising your ROI without burning budget.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mil-divider-green"></div>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="testimonials mil-p-120">
+    <div class="container">
+      <div class="section-header center">
+        <div class="mil-suptitle-line" style="display:inline-block;">Client Voices</div>
+        <h2>What Our <em class="mil-accent">Health Clients</em> <span class="mil-thin">Say</span></h2>
+      </div>
+
+      <div class="testi-grid">
+
+        <div class="testi-card fade-up">
+          <div class="testi-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testi-text">
+            "Arzooz completely transformed our patient acquisition. Their compliance-first approach meant zero ad rejections, and our booking rate doubled in just 8 weeks. They genuinely understand the health space."
+          </p>
+          <div class="testi-person">
+            <div class="testi-avatar" style="background:#94C72C;">D</div>
+            <div>
+              <div class="testi-name">Dr. Sarah Al-Mansouri</div>
+              <div class="testi-role">Medical Director — Dubai Skin Clinic</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fade-up">
+          <div class="testi-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testi-text">
+            "After two agencies failed us and got our account banned, Arzooz fixed everything. They restored our Meta account, rebuilt our funnel, and we're now seeing 5x ROAS consistently. Worth every penny."
+          </p>
+          <div class="testi-person">
+            <div class="testi-avatar" style="background:#27ae60;">J</div>
+            <div>
+              <div class="testi-name">James Keller</div>
+              <div class="testi-role">Founder — NatureGlow Skincare, US</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testi-card fade-up">
+          <div class="testi-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="testi-text">
+            "The AI automation they set up for our gym chain has been a game-changer. Leads are followed up instantly, appointments book automatically, and we've cut our admin time by 70%. Incredible team."
+          </p>
+          <div class="testi-person">
+            <div class="testi-avatar" style="background:#2dcc70;">A</div>
+            <div>
+              <div class="testi-name">Ayesha Tariq</div>
+              <div class="testi-role">CEO — FitLife Gym Network, Pakistan</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="mil-divider-green"></div>
+
+  <!-- ============ WHO WE WORK WITH ============ -->
+  <section class="clients mil-p-120">
+    <div class="container">
+      <div class="section-header center">
+        <div class="mil-suptitle-line" style="display:inline-block;">Our Clients</div>
+        <h2>Who We <em class="mil-accent">Work With</em></h2>
+        <p>If you're in the health &amp; wellness space, we have the experience, templates, and proven playbooks ready to deploy.</p>
+      </div>
+
+      <div class="clients-grid">
+        <div class="client-tile fade-up">
+          <div class="ct-icon"><i class="fas fa-clinic-medical"></i></div>
+          <p>Clinics &amp; Hospitals</p>
+        </div>
+        <div class="client-tile fade-up">
+          <div class="ct-icon"><i class="fas fa-dumbbell"></i></div>
+          <p>Gyms &amp; Fitness</p>
+        </div>
+        <div class="client-tile fade-up">
+          <div class="ct-icon"><i class="fas fa-spa"></i></div>
+          <p>Skincare Brands</p>
+        </div>
+        <div class="client-tile fade-up">
+          <div class="ct-icon"><i class="fas fa-capsules"></i></div>
+          <p>Supplement Companies</p>
+        </div>
+        <div class="client-tile fade-up">
+          <div class="ct-icon"><i class="fas fa-brain"></i></div>
+          <p>Mental Health</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="mil-divider-green"></div>
+
+  <!-- ============ FINAL CTA ============ -->
+  <section class="final-cta mil-p-120">
+    <div class="final-cta-blob"></div>
+    <div class="container">
+      <div class="final-cta-inner">
+        <div class="urgency-badge">Limited Spots Available This Month</div>
+        <h2>Ready to Scale Your Health Brand <em class="mil-accent">Safely</em> &amp; <em class="mil-accent">Profitably?</em></h2>
+        <p>Book a free 30-minute strategy call. We'll audit your current marketing, identify your biggest growth opportunities, and give you a clear roadmap — no obligations, no fluff.</p>
+        <div class="final-cta-btns">
+          <a href="/contact" class="btn btn-primary">
+            <span>Book Free Strategy Call</span>
+            <span class="btn-icon"><i class="fas fa-arrow-right"></i></span>
+          </a>
+          <a href="/contact" class="btn btn-outline">Get Free Audit Instead</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+
+        <div class="footer-brand">
+          <div class="mil-logo" style="font-size:28px;">Arzooz<span>.</span></div>
+          <p>We help health &amp; wellness brands scale with compliant, high-converting digital marketing across Pakistan, the US, Germany, and Dubai.</p>
+          <div class="footer-social">
+            <a href="https://facebook.com/61564310700626" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.instagram.com/arzooz.inc/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/arzooz" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h6>Navigation</h6>
+          <ul>
+            <li><a href="/">Homepage</a></li>
+            <li><a href="/services">Services</a></li>
+            <li><a href="/portfolio">Portfolio</a></li>
+            <li><a href="/blog">Blog</a></li>
+            <li><a href="/contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h6>Services</h6>
+          <ul>
+            <li><a href="/services">Digital Marketing</a></li>
+            <li><a href="/services">Web Development</a></li>
+            <li><a href="/services">AI Automation</a></li>
+            <li><a href="/services">Creative Consulting</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h6>Offices</h6>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Pakistan — New Blue Area, G-10, Islamabad</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>United States — 1262 S Longwood Ave, Los Angeles, CA</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Dubai — Farhat Original, 7 Street, Deira, UAE</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Germany — Mollstrasse 29, Reckenroth, 56370</span>
+          </div>
+          <div class="footer-contact-item">
+            <i class="fas fa-phone"></i>
+            <span>+1 (213) 772-0313</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>© Copyright 2024 — Arzooz. All Rights Reserved.</p>
+        <div class="footer-bottom-links">
+          <a href="/privacy-policy">Privacy Policy</a>
+          <a href="/terms">Terms &amp; Conditions</a>
+          <a href="/cookie-policy">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ JAVASCRIPT ============ -->
+  <script>
+    // Scroll progress bar
+    window.addEventListener('scroll', () => {
+      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById('progressBar').style.height = scrolled + '%';
+    });
+
+    // Nav shrink on scroll
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // Burger menu
+    const burger = document.getElementById('burger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+    function closeMobile() {
+      burger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+    }
+
+    // Scroll-triggered fade-up animation
+    const fadeEls = document.querySelectorAll('.fade-up');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    // Animated counter numbers in niche section
+    function animateCounter(el) {
+      const target = parseInt(el.getAttribute('data-num'));
+      const duration = 1800;
+      const step = target / (duration / 16);
+      let current = 0;
+      const timer = setInterval(() => {
+        current = Math.min(current + step, target);
+        el.textContent = Math.floor(current) + (el.dataset.suffix || '');
+        if (current >= target) clearInterval(timer);
+      }, 16);
+    }
+
+    // Trigger counters when visible
+    const counterEls = document.querySelectorAll('[data-num]');
+    const counterObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { animateCounter(e.target); counterObserver.unobserve(e.target); }
+      });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el => counterObserver.observe(el));
+  </script>
+
+</body>
+</html>

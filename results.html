@@ -1,0 +1,358 @@
+<!-- ============================================================
+     CAMPAIGN RESULTS — Simple Slideshow Section
+     ============================================================ -->
+<style>
+.cr-section {
+  background: #111111;
+  padding: 100px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cr-section::before,
+.cr-section::after {
+  content: '';
+  position: absolute;
+  left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, #94C72C, transparent);
+}
+.cr-section::before { top: 0; }
+.cr-section::after  { bottom: 0; }
+
+/* Header */
+.cr-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.cr-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: rgba(148,199,44,.08);
+  border: 1px solid rgba(148,199,44,.25);
+  border-radius: 50px; padding: 8px 20px;
+  margin-bottom: 20px;
+}
+.cr-label i    { color: #94C72C; font-size: 12px; }
+.cr-label span { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; color: #94C72C; }
+.cr-header h2  {
+  font-family: "Outfit", sans-serif;
+  font-size: clamp(26px, 4vw, 52px);
+  font-weight: 500;
+  color: rgba(255,255,255,.9);
+  margin-bottom: 14px;
+}
+.cr-header h2 span { font-weight: 100; }
+.cr-header h2 em   { font-style: normal; color: #94C72C; }
+.cr-header p {
+  font-size: 16px; color: rgba(255,255,255,.38);
+  max-width: 480px; margin: 0 auto; line-height: 1.7;
+}
+
+/* Slideshow Box */
+.cr-box {
+  max-width: 860px;
+  margin: 0 auto;
+  background: #151515;
+  border: 1px solid rgba(148,199,44,.2);
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Fake browser bar */
+.cr-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 12px 18px;
+  background: #1a1a1a;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.cr-dots { display: flex; gap: 6px; }
+.cr-dot  { width: 11px; height: 11px; border-radius: 50%; }
+.cr-dot:nth-child(1) { background: #ff5f57; }
+.cr-dot:nth-child(2) { background: #febc2e; }
+.cr-dot:nth-child(3) { background: #28c840; }
+.cr-url {
+  flex: 1; height: 24px; background: rgba(255,255,255,.06);
+  border-radius: 6px; display: flex; align-items: center;
+  padding: 0 12px; font-size: 11px; color: rgba(255,255,255,.22);
+}
+
+/* Slides */
+.cr-slides { position: relative; height: 460px; overflow: hidden; }
+
+.cr-slide {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+.cr-slide.active { opacity: 1; pointer-events: all; }
+
+.cr-slide img {
+  width: 100%; height: 360px;
+  object-fit: cover; object-position: top;
+  display: block;
+}
+
+/* Placeholder if no image */
+.cr-slide .cr-ph {
+  width: 100%; height: 360px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  background: #0d0d0d;
+}
+.cr-slide .cr-ph i    { font-size: 40px; color: rgba(148,199,44,.2); }
+.cr-slide .cr-ph span { font-size: 12px; color: rgba(255,255,255,.18); text-transform: uppercase; letter-spacing: 1px; }
+
+/* Slide caption */
+.cr-caption {
+  padding: 18px 24px;
+  border-top: 1px solid rgba(255,255,255,.05);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px;
+}
+.cr-caption-text h5 {
+  font-family: "Outfit", sans-serif;
+  font-size: 15px; font-weight: 500;
+  color: rgba(255,255,255,.8); margin-bottom: 4px;
+}
+.cr-caption-text p {
+  font-size: 12px; color: rgba(255,255,255,.35); line-height: 1.5;
+}
+.cr-platform-tag {
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 20px; padding: 6px 14px; white-space: nowrap;
+  font-size: 11px; color: rgba(255,255,255,.45); flex-shrink: 0;
+}
+
+/* Navigation dots */
+.cr-nav {
+  display: flex; align-items: center; justify-content: center;
+  gap: 8px; padding: 20px 0 0;
+}
+.cr-nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  cursor: pointer; transition: background .3s, transform .3s;
+  border: none; padding: 0;
+}
+.cr-nav-dot.active {
+  background: #94C72C; transform: scale(1.25);
+}
+
+/* Arrows */
+.cr-arrow {
+  position: absolute; top: calc(360px / 2); transform: translateY(-50%);
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(0,0,0,.6); border: 1px solid rgba(255,255,255,.1);
+  color: rgba(255,255,255,.7); font-size: 13px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; z-index: 5; transition: background .25s, border-color .25s;
+  backdrop-filter: blur(6px);
+}
+.cr-arrow:hover { background: #94C72C; border-color: #94C72C; color: #000; }
+.cr-arrow.prev { left: 14px; }
+.cr-arrow.next { right: 14px; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .cr-section { padding: 70px 0; }
+  .cr-slides   { height: 380px; }
+  .cr-slide img, .cr-slide .cr-ph { height: 280px; }
+  .cr-arrow { top: calc(280px / 2); }
+  .cr-caption { flex-direction: column; align-items: flex-start; gap: 10px; }
+}
+@media (max-width: 480px) {
+  .cr-slides   { height: 320px; }
+  .cr-slide img, .cr-slide .cr-ph { height: 230px; }
+  .cr-arrow { top: calc(230px / 2); }
+  .cr-caption-text h5 { font-size: 14px; }
+}
+</style>
+
+
+<!-- HTML -->
+<section class="cr-section" id="results">
+  <div class="container">
+
+    <div class="cr-header">
+      <div class="cr-label">
+        <i class="fas fa-chart-bar"></i>
+        <span>Campaign Results</span>
+      </div>
+      <h2>Real Campaigns, <em>Real Numbers</em><br><span>No Guesswork — Just Growth</span></h2>
+      <p>A snapshot of results we've delivered for health &amp; wellness brands across paid channels.</p>
+    </div>
+
+    <div class="cr-box">
+
+      <!-- Browser Bar -->
+      <div class="cr-bar">
+        <div class="cr-dots">
+          <div class="cr-dot"></div>
+          <div class="cr-dot"></div>
+          <div class="cr-dot"></div>
+        </div>
+        <div class="cr-url" id="crUrl">ads.facebook.com — Campaign Results</div>
+      </div>
+
+      <!-- Slides -->
+      <div class="cr-slides" id="crSlides">
+
+        <div class="cr-arrow prev" id="crPrev"><i class="fas fa-chevron-left"></i></div>
+        <div class="cr-arrow next" id="crNext"><i class="fas fa-chevron-right"></i></div>
+
+        <!--
+          ★ SLIDE 1
+          src mai apna screenshot path daalein: src="img/results/campaign-1.jpg"
+        -->
+        <div class="cr-slide active">
+          <img
+            src="img/results/campaign-1.jpg"
+            alt="Meta Ads Campaign Results"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="cr-ph" style="display:none;">
+            <i class="fas fa-image"></i>
+            <span>Add screenshot here — src="img/results/campaign-1.jpg"</span>
+          </div>
+          <div class="cr-caption">
+            <div class="cr-caption-text">
+              <h5>Dubai Aesthetic Clinic — Meta Ads</h5>
+              <p>+180% leads, 3.8x ROAS, cost per lead reduced by 60% in 8 weeks.</p>
+            </div>
+            <div class="cr-platform-tag"><i class="fab fa-facebook" style="color:#1877f2;"></i> Meta Ads</div>
+          </div>
+        </div>
+
+        <!--
+          ★ SLIDE 2
+          src mai apna screenshot path daalein: src="img/results/campaign-2.jpg"
+        -->
+        <div class="cr-slide">
+          <img
+            src="img/results/campaign-2.jpg"
+            alt="Google Ads Campaign Results"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="cr-ph" style="display:none;">
+            <i class="fas fa-image"></i>
+            <span>Add screenshot here — src="img/results/campaign-2.jpg"</span>
+          </div>
+          <div class="cr-caption">
+            <div class="cr-caption-text">
+              <h5>FitLife App, Los Angeles — Google Ads</h5>
+              <p>+2,400 new users/month, 4.5x ROI, 40% improvement in user retention.</p>
+            </div>
+            <div class="cr-platform-tag"><i class="fab fa-google" style="color:#fbbc04;"></i> Google Ads</div>
+          </div>
+        </div>
+
+        <!--
+          ★ SLIDE 3
+          src mai apna screenshot path daalein: src="img/results/campaign-3.jpg"
+        -->
+        <div class="cr-slide">
+          <img
+            src="img/results/campaign-3.jpg"
+            alt="LinkedIn Ads Campaign Results"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"
+          >
+          <div class="cr-ph" style="display:none;">
+            <i class="fas fa-image"></i>
+            <span>Add screenshot here — src="img/results/campaign-3.jpg"</span>
+          </div>
+          <div class="cr-caption">
+            <div class="cr-caption-text">
+              <h5>HealthPro Supplements, Pakistan — LinkedIn Ads</h5>
+              <p>+220% revenue growth, 5.1x ROAS, bounce rate down 45% in 10 weeks.</p>
+            </div>
+            <div class="cr-platform-tag"><i class="fab fa-linkedin" style="color:#0a66c2;"></i> LinkedIn Ads</div>
+          </div>
+        </div>
+
+        <!--
+          ★ AUR SLIDES BADHANE KE LIYE COPY KAREIN YEH BLOCK:
+
+        <div class="cr-slide">
+          <img src="img/results/campaign-4.jpg" alt="..."
+               onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+          <div class="cr-ph" style="display:none;">
+            <i class="fas fa-image"></i><span>Add screenshot here</span>
+          </div>
+          <div class="cr-caption">
+            <div class="cr-caption-text">
+              <h5>Campaign Title</h5>
+              <p>Short description of the result.</p>
+            </div>
+            <div class="cr-platform-tag"><i class="fab fa-facebook" style="color:#1877f2;"></i> Meta Ads</div>
+          </div>
+        </div>
+        -->
+
+      </div><!-- /.cr-slides -->
+
+      <!-- Dots -->
+      <div class="cr-nav" id="crNav"></div>
+
+    </div><!-- /.cr-box -->
+  </div>
+</section>
+
+
+<!-- JavaScript -->
+<script>
+(function () {
+  const slides   = document.querySelectorAll('.cr-slide');
+  const nav      = document.getElementById('crNav');
+  const prevBtn  = document.getElementById('crPrev');
+  const nextBtn  = document.getElementById('crNext');
+  const urlBar   = document.getElementById('crUrl');
+  let current    = 0;
+  let autoTimer;
+
+  const urls = [
+    'ads.facebook.com — Campaign Results',
+    'ads.google.com — Campaign Dashboard',
+    'linkedin.com/campaign-manager — Results',
+  ];
+
+  /* Build dots */
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'cr-nav-dot' + (i === 0 ? ' active' : '');
+    d.addEventListener('click', () => goTo(i));
+    nav.appendChild(d);
+  });
+
+  function goTo(n) {
+    slides[current].classList.remove('active');
+    nav.children[current].classList.remove('active');
+    current = (n + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    nav.children[current].classList.add('active');
+    if (urlBar && urls[current]) urlBar.textContent = urls[current];
+    resetAuto();
+  }
+
+  function resetAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current + 1), 4000);
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  /* Swipe support for mobile */
+  let touchX = 0;
+  const box = document.querySelector('.cr-slides');
+  box.addEventListener('touchstart', e => { touchX = e.touches[0].clientX; }, { passive: true });
+  box.addEventListener('touchend',   e => {
+    const diff = touchX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+  });
+
+  resetAuto();
+})();
+</script>
